@@ -2,8 +2,8 @@ import React from "react";
 import { TypewriterEffect } from "./ui/typewriter-effect";
 const TypeWriter = () => {
   const words = [
-    { text: "Emil", className: "text-sky-900" },
-    { text: "Kazımov", className: "text-sky-900" },
+    { text: "Emil", className: "text-[var(--border-color)]" },
+    { text: "Kazımov", className: "text-[var(--border-color)]" },
   ];
   return (
     <div className="-my-4">

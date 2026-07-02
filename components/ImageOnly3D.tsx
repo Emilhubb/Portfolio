@@ -6,10 +6,10 @@ import Image from "../public/profilephoto.jpeg"
 export default function ImageOnly3D() {
   return (
     <CardContainer className="inter-var">
-      <CardBody className="relative w-65 h-100 aspect-[3/4] rounded-xl group">
+      <CardBody className="relative w-70 h-100 aspect-[3/4] rounded-sm group">
         <CardItem
           translateZ="60"
-          className="relative w-full h-full rounded-xl overflow-hidden border border-blue-500/20 shadow-md transition-shadow duration-300 group-hover/card:shadow-2xl"
+          className="relative w-full h-full rounded-sm overflow-hidden border border-blue-500/20 shadow-md transition-shadow duration-300 group-hover/card:shadow-2xl"
         >
           <img
             src={Image.src}
