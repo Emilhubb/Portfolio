@@ -2,6 +2,7 @@ import { SimpleMarquee } from "./ui/3d-marquee";
 
 export default function MarqueeEffect() {
   const mySkills = [
+    "•",
     "React.js",
     "•",
     "Next.js",
@@ -13,11 +14,10 @@ export default function MarqueeEffect() {
     "Frontend Developer",
     "•",
     "Web Security",
-    "•",
   ];
 
   return (
-    <main className=" w-80  bg-neutral-950 mb-5 italic">
+    <main className=" w-80 mb-5 italic">
       <SimpleMarquee texts={mySkills} speed={25} />
     </main>
   );
