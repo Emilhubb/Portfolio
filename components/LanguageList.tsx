@@ -23,7 +23,7 @@ const LanguageList = () => {
   }
   return (
     <>
-      <ul className="flex flex-col p-4 gap-6 w-full py-4">
+      <ul className="flex flex-col p-4 gap-4 w-full py-4">
         {languages.map((lang) => (
           <li key={lang.name} className="flex items-center gap-2">
             <Image

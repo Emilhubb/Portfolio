@@ -10,6 +10,11 @@ const MusicZone = () => {
         <span className="longline block w-full h-px bg-(--border-color) "></span>
       </div>
 
+      <div className="py-1 mt-5 ">
+        <p className="text-zinc-100 text-center italic leading-8 whitespace-pre-line select-none">
+          Wanna take a sip of my playlist?
+        </p>
+      </div>
       <div className="h-auto py-5 flex justify-center">
         <iframe
           data-testid="embed-iframe"
@@ -17,10 +22,9 @@ const MusicZone = () => {
           src="https://open.spotify.com/embed/playlist/5u4XmlPeEbiDDbxPp57qCQ?utm_source=generator&theme=0&si=14bfed0cb1cd4429"
           width="100%"
           height="500"
-          frameBorder="0"
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
+          loading="eager"
           className=" shadow-blue-950 shadow-[0_10px_30px_1px] "
         ></iframe>
       </div>

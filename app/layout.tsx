@@ -4,7 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { BackgroundBeams } from "@/components/ui/beams";
 
-
 const blackOpsOne = Black_Ops_One({
   weight: "400",
   subsets: ["latin"],
@@ -24,17 +23,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "h-full",
-        "antialiased",
-        blackOpsOne.variable,
-        "font-sans",
-      )}
+      className={cn("h-full", "antialiased", blackOpsOne.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col relative ">
-        <BackgroundBeams
-          className="pointer-events-none -z-30 bg-black"
-        />
+      <body className="min-h-full flex flex-col relative bg-black ">
+        <div className="absolute inset-0 -z-30 pointer-events-none will-change-transform transform-gpu">
+          <BackgroundBeams className="pointer-events-none -z-30" />
+        </div>
         {children}
       </body>
     </html>

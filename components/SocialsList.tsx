@@ -24,7 +24,7 @@ const socials = [
 const SocialList = () => {
   return (
     <>
-      <ul className="flex flex-col gap-3 w-full py-6 ">
+      <ul className="flex flex-col gap-2 w-full mt-5 ">
         {socials.map((social) => (
           <li key={social.name} className="flex items-center gap-2 transition-transform duration-400 hover:scale-105">
             <Image
