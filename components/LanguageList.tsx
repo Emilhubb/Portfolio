@@ -43,7 +43,7 @@ const LanguageList = () => {
             className="w-5 h-5 rounded-full object-cover shrink-0"
           />
           <span
-            className="text-white/70 select-none italic"
+            className="text-white/70 select-none italic cursor-pointer"
             onClick={() => setToggleDuolingoCard(!toggleDuolingoCard)}
           >
             {

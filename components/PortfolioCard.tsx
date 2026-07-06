@@ -4,10 +4,11 @@ import TypeWriter from "./TypeWriter";
 
 import LanguageList from "./LanguageList";
 import AboutMe from "./AboutMe";
+import MusicZone from "./MusicZone";
 const PortfolioCard = () => {
   return (
-    <aside className="relative flex flex-col items-center w-78 h-auto rounded-[10px] pt-0 bg-transparent  shadow-lg backdrop-blur-[6px] gap-30 ">
-      <div className="profilep p-1 border-2 border-(--border-color)">
+    <aside className="relative flex flex-col items-center w-78 h-auto rounded-[10px] pt-0  gap-20 ">
+      <div className="profilep p-1 border-2 border-(--border-color) shadow-blue-950 shadow-[0_0_50px_10px] bg-transparent backdrop-blur-[6px] ">
         <ImageOnly3D />
         <TypeWriter />
         <p className="text-white text-2xl py-10 text-center italic select-none">
@@ -25,6 +26,7 @@ const PortfolioCard = () => {
       </div>
 
       <AboutMe />
+      <MusicZone/>
     </aside>
   );
 };
