@@ -80,7 +80,7 @@ export default function DuolingoCard() {
   const maxXp = Math.max(...stats.courses.map((c) => c.xp), 1);
 
   return (
-    <div className="relative overflow-hidden rounded-3xl bg-[#347501] p-7 text-white shadow-[0_8px_0_0_#3d9100] max-w-md">
+    <div className="relative overflow-hidden rounded-3xl bg-[#347501] p-7 text-white shadow-[0_8px_0_0_#3d9100] max-w-md select-none">
       <div className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/10" />
       <div className="pointer-events-none absolute -bottom-10 -left-8 h-40 w-40 rounded-full bg-white/5" />
 

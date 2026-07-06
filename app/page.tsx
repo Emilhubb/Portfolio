@@ -1,4 +1,4 @@
-import AboutCard from "../components/AboutCard";
+import AboutCard from "../components/PortfolioCard";
 
 export default function Home() {
   return (
