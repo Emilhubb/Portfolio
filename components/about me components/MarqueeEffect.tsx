@@ -1,4 +1,4 @@
-import { SimpleMarquee } from "./ui/3d-marquee";
+import { SimpleMarquee } from "../ui/3d-marquee";
 
 export default function MarqueeEffect() {
   const mySkills = [

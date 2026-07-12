@@ -1,7 +1,7 @@
 "use client";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Image from "../public/profilephoto.jpeg"
+import Image from "../../public/profilephoto.jpeg"
 
 export default function ImageOnly3D() {
   return (

@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import English from "../public/english.png";
-import German from "../public/german.png";
-import Italian from "../public/italian.png";
-import Russian from "../public/russian.png";
-import Duolingo from "../public/duolingo.avif";
+import English from "../../public/english.png";
+import German from "../../public/german.png";
+import Italian from "../../public/italian.png";
+import Russian from "../../public/russian.png";
+import Duolingo from "../../public/duolingo.avif";
 import DuolingoCard from "./DuolingoCard";
 
 const languages = [

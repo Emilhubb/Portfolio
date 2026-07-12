@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Linkedin from "../public/linkedin.webp";
-import Github from "../public/github.png";
-import Insta from "../public/instagram.png";
+import Linkedin from "../../public/linkedin.webp";
+import Github from "../../public/github.png";
+import Insta from "../../public/instagram.png";
 
 const socials = [
   {

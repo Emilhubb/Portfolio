@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
-import English from "../public/english.png";
-import German from "../public/german.png";
-import Italian from "../public/italian.png";
-import Russian from "../public/russian.png";
+import English from "../../public/english.png";
+import German from "../../public/german.png";
+import Italian from "../../public/italian.png";
+import Russian from "../../public/russian.png";
 
 const FLAGS: Record<string, StaticImageData> = {
   de: German,
