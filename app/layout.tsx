@@ -1,8 +1,12 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Black_Ops_One, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { BackgroundBeams } from "@/components/ui/beams";
+import Navbar from "@/components/navbar components/Navbar"; // ← import your navbar
+import AboutMe from "@/components/about me components/AboutMe";
+import PortfolioCard from "@/components/about me components/PortfolioCard";
 
 const blackOpsOne = Black_Ops_One({
   weight: "400",
@@ -25,11 +29,21 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", blackOpsOne.variable, "font-sans")}
     >
-      <body className="min-h-full flex flex-col relative bg-black ">
+      <body className="min-h-full  relative bg-black ">
         <div className="absolute inset-0 -z-30 pointer-events-none will-change-transform transform-gpu">
           <BackgroundBeams className="pointer-events-none -z-30" />
         </div>
-        {children}
+        <div className=" flex w-full min-h-screen p-4 sm:p-6 text-white animate-fade-up ">
+          <div className="flex flex-col justify-center md:justify-start md:flex-row items-center md:items-start gap-8 ">
+            <PortfolioCard />
+          </div>
+          <div className="flex flex-col w-full h-fit   gap-20 mt-5 ml-10 mr-10  bg-transparent backdrop-blur-[15px]">
+            <div className="border-2 border-(--border-color)">
+              <Navbar />
+            </div>
+            <main className="border-2 border-(--border-color)">{children}</main>
+          </div>
+        </div>
       </body>
     </html>
   );

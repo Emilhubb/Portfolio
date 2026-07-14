@@ -8,7 +8,7 @@ import MusicZone from "./MusicZone";
 const PortfolioCard = () => {
   return (
     <aside className="relative flex flex-col items-center w-78 h-auto rounded-[10px] pt-5  gap-20 ">
-      <div className="profilep p-1 border-2 border-(--border-color) shadow-blue-950 shadow-[0_0_50px_10px] bg-transparent backdrop-blur-[6px] ">
+      <div className="profilep p-1 border-2 border-(--border-color) shadow-blue-950 shadow-[0_0_50px_10px] bg-transparent backdrop-blur-[10px] ">
         <ImageOnly3D />
         <TypeWriter />
         <p className="text-white text-2xl py-10 text-center italic select-none">
