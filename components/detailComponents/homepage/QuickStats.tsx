@@ -1,6 +1,14 @@
 "use client";
 import React from "react";
-import { Code2, Globe2, BookOpenCheck, Award, FolderGit2, GraduationCap, UniversityIcon, } from "lucide-react";
+import {
+  Code2,
+  Globe2,
+  BookOpenCheck,
+  Award,
+  FolderGit2,
+  GraduationCap,
+  UniversityIcon,
+} from "lucide-react";
 
 export function QuickStats() {
   const stats = [
@@ -14,16 +22,17 @@ export function QuickStats() {
     },
     {
       id: 2,
-      title: "Academic Background",
-      value: "B.S. InfoSec",
-      description: "Information Security Specialization",
-      icon: GraduationCap,
-      accentColor: "text-emerald-400",
+      title: "Built Projects",
+      value: "5+ Web Apps",
+      description: "Personal, Weather, Currency Apps",
+      icon: FolderGit2,
+      accentColor: "text-indigo-400",
     },
+
     {
       id: 3,
       title: "International Events",
-      value: "3 Events",
+      value: "4 Events",
       description: "Formula 1 & COP29 & ITU WTDC-25 & WUF-13",
       icon: Globe2,
       accentColor: "text-blue-400",
@@ -38,31 +47,37 @@ export function QuickStats() {
     },
     {
       id: 5,
-      title: "Built Projects",
-      value: "5+ Web Apps",
-      description: "Personal, Weather, Currency Apps",
-      icon: FolderGit2,
-      accentColor: "text-indigo-400",
+      title: "Academic Background",
+      value: "Bachelor Degree",
+      description: "Information Security Specialization",
+      icon: GraduationCap,
+      accentColor: "text-emerald-400",
     },
     {
-        id: 6,
-        title: "University GPA",
-        value: "3.7 / 4.0",
-        description: "A successful outcome of 4 years",
-        icon: UniversityIcon,
-        accentColor: 'text-purple-700'
-    }
+      id: 6,
+      title: "University GPA",
+      value: "3.7 / 4.0",
+      description: "A successful outcome of 4 years",
+      icon: UniversityIcon,
+      accentColor: "text-purple-700",
+    },
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto my-20">
+    <div className="w-full max-w-5xl mx-auto my-10 select-none">
+      <div className="flex items-center px-5 mb-6">
+        <span className="w-1 h-1 mx-5 rounded-full bg-blue-500 shadow-[0_0_10px_3px] shadow-blue-500" />
+        <h2 className="text-white font-bold text-3xl tracking-wide">
+          Quick Stats
+        </h2>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.id}
-              className="group relative flex flex-col justify-between p-5 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md hover:border-sky-500/50 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 transform-gpu  shadow-sky-500/20 shadow-[0px_8px_32px_0px] "
+              className="group relative flex flex-col justify-between p-5 rounded-xl border border-(--border-color) bg-black/40 backdrop-blur-md hover:border-blue-500 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 hover:transition-transform hover:scale-103 transform-gpu  shadow-sky-500/20 shadow-[0px_2px_25px_0px] "
             >
               <div className="flex items-center justify-between">
                 <span className="text-zinc-400 text-xs font-mono uppercase tracking-wider">

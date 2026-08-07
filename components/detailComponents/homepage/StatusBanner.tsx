@@ -3,6 +3,7 @@
 export function StatusBanner() {
   return (
     <div className="w-full flex justify-center my-8">
+      
       <div className="relative group inline-flex items-center gap-3 rounded-full border border-(--border-color) bg-black/40 backdrop-blur-md px-5 py-2.5 shadow-lg shadow-blue-950/20 hover:border-blue-500/50 transition-all duration-300">
         
         <div className="absolute inset-0 rounded-full bg-blue-500/10 opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500 pointer-events-none" />
