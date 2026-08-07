@@ -1,15 +1,16 @@
-import { CanvasText } from '@/components/ui/canvas-text'
-import React from 'react'
-import { CanvasTextDemo } from './effects/CanvasText'
-
-const HomeDetails = () => { 
+import { CanvasText } from "@/components/ui/canvas-text";
+import React from "react";
+import { CanvasTextDemo } from "./effects/CanvasText";
+import { StatusBanner } from "../homepage/StatusBanner";
+const HomeDetails = () => {
   return (
-    <div className='relative'>
-    <div className='bg-transparent backdrop-blur-[10px] select-none'>
-      <CanvasTextDemo/>
+    <div className="relative bg-transparent backdrop-blur-[10px]">
+      <div className=" select-none">
+        <CanvasTextDemo />
+      </div>
+      <StatusBanner />
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default HomeDetails
+export default HomeDetails;
