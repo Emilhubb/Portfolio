@@ -8,17 +8,16 @@ export function CanvasTextDemo() {
 
   useEffect(() => {
     const hour = new Date().getHours();
-    console.log(hour);
     setGreeting(
-      hour >= 18 || hour < 7 ? "Have A Nice Evening, " : "Have A Nice Day, ",
+      hour >= 18 || hour < 7 ? "Have A Nice Evening, " : "Have A Nice Day, "
     );
   }, []);
 
   return (
-    <div className="flex min-h-80 items-end justify-end p-8">
+    <div className="flex min-h-70 w-full flex-col items-center justify-center p-8 text-center">
       <h2
         className={cn(
-          "group relative mt-4 max-w-lg text-right italic text-4xl font-bold tracking-tighter  sm:text-5xl md:text-6xl xl:text-[85px]  text-gray-300 dark:text-neutral-700",
+          "group relative mx-auto max-w-4xl text-center italic text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl xl:text-[80px] text-gray-200 dark:text-neutral-100"
         )}
       >
         {greeting}
@@ -42,6 +41,8 @@ export function CanvasTextDemo() {
           animationDuration={20}
         />
       </h2>
+
+   
     </div>
   );
 }
