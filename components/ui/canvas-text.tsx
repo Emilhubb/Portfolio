@@ -35,7 +35,7 @@ const DEFAULT_COLORS = [
 
 export function CanvasText({
   text,
-  className = "",
+  className = "italic",
   backgroundClassName = "bg-white dark:bg-neutral-950",
   colors = DEFAULT_COLORS,
   animationDuration = 5,
@@ -87,7 +87,7 @@ export function CanvasText({
         height: Math.ceil(rect.height) || 200,
       });
       setFont(
-        `${computed.fontWeight} ${computed.fontSize} ${computed.fontFamily}`,
+        ` ${computed.fontStyle} ${computed.fontWeight} ${computed.fontSize} ${computed.fontFamily}`,
       );
     };
 

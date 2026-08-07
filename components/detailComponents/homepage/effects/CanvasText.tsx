@@ -8,19 +8,23 @@ export function CanvasTextDemo() {
 
   useEffect(() => {
     const hour = new Date().getHours();
-    setGreeting(hour <= 18 || hour > 7 ? "Have A Nice Evening, " : "Have A Nice Day, ");
+    console.log(hour);
+    setGreeting(
+      hour >= 18 || hour < 7 ? "Have A Nice Evening, " : "Have A Nice Day, ",
+    );
   }, []);
 
   return (
     <div className="flex min-h-80 items-end justify-end p-8">
       <h2
         className={cn(
-          "group relative mt-4 max-w-2xl text-right text-4xl leading-20 font-bold tracking-tight text-balance text-gray-300 sm:text-5xl md:text-6xl xl:text-7xl dark:text-neutral-700",
+          "group relative mt-4 max-w-lg text-right italic text-4xl font-bold tracking-tighter  sm:text-5xl md:text-6xl xl:text-[85px]  text-gray-300 dark:text-neutral-700",
         )}
       >
         {greeting}
         <CanvasText
           text="Stranger"
+          className="italic"
           backgroundClassName="bg-blue-600 dark:bg-blue-700"
           colors={[
             "rgba(0, 153, 255, 1)",

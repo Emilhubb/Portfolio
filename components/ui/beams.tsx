@@ -23,12 +23,6 @@ const pathData = [
   "M-138 -453C-138 -453 -70 -48 394 79C858 206 926 611 926 611",
   "M-116 -477C-116 -477 -48 -72 416 55C880 182 948 587 948 587",
   "M-94 -501C-94 -501 -26 -96 438 31C902 158 970 563 970 563",
-  "M-72 -525C-72 -525 -4 -120 460 7C924 134 992 539 992 539",
-  "M-50 -549C-50 -549 18 -144 482 -17C946 110 1014 515 1014 515",
-  "M-28 -573C-28 -573 40 -168 504 -41C968 86 1036 491 1036 491",
-  "M-6 -597C-6 -597 62 -192 526 -65C990 62 1058 467 1058 467",
-  "M16 -621C16 -621 84 -216 548 -89C1012 38 1080 443 1080 443",
-  "M38 -645C38 -645 106 -240 570 -113C1034 14 1102 419 1102 419",
 ]
 
 // Pre-calculated animation values for each path
@@ -49,14 +43,10 @@ export const BackgroundBeams = React.memo(({ className }: BackgroundBeamsProps) 
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid slice"
       >
-        {/* Static faint paths for depth */}
         <g opacity="0.03">
-          {pathData.map((d, i) => (
-            <path key={`static-${i}`} d={d} stroke="white" strokeWidth="0.5" />
-          ))}
+         
         </g>
 
-        {/* Animated gradient beams */}
         {pathData.map((d, i) => (
           <motion.path
             key={`beam-${i}`}
@@ -67,7 +57,7 @@ export const BackgroundBeams = React.memo(({ className }: BackgroundBeamsProps) 
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{
               pathLength: [0, 1],
-              opacity: [0, 0.6, 0.6, 0],
+              opacity: [0, 0.2, 0],
             }}
             transition={{
               duration: animations[i].duration,
@@ -105,7 +95,7 @@ BackgroundBeams.displayName = "BackgroundBeams"
 
 export default function BackgroundBeamsDemo() {
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-neutral-950">
+    <div className="relative h-screen w-screen overflow-hidden bg-neutral-950 z-10">
       <BackgroundBeams />
     </div>
   )

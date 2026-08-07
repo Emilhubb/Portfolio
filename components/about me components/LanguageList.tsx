@@ -23,7 +23,7 @@ const LanguageList = () => {
   }
   return (
     <>
-      <ul className="flex flex-col p-4 gap-4 w-full py-4">
+      <ul className="flex flex-col p-4 gap-4 w-full py-4 ">
         {languages.map((lang) => (
           <li key={lang.name} className="flex items-center gap-2">
             <Image
@@ -47,13 +47,13 @@ const LanguageList = () => {
             onClick={() => setToggleDuolingoCard(!toggleDuolingoCard)}
           >
             {
-              toggleDuolingoCard ? "Hide Duolingo Card" : "Show Duolingo Card"  
+              toggleDuolingoCard ? "Hide Duolingo Card" : "Show Duolingo Card"
             }
           </span>
         </li>
       </ul>
       {toggleDuolingoCard && (
-        <div className="mt-4 px-4 mb-8">
+        <div className="mt-4 px-4 mb-8 bg-transparent backdrop-blur-[10px]">
           <DuolingoCard />
         </div>
       )}
