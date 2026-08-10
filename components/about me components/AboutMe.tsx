@@ -3,7 +3,7 @@ import SocialList from "./SocialsList";
 
 const AboutMe = () => {
   return (
-    <div className="aboutme flex flex-col border-2 p-4 border-(--border-color) w-full shadow-blue-950 shadow-[0_0_50px_10px] bg-transparent backdrop-blur-[6px]  ">
+    <div className="aboutme flex flex-col border-2 p-4 border-(--border-color) w-full shadow-[0_0_30px_10px_rgba(59,130,246,0.3)] bg-transparent backdrop-blur-[6px]  ">
       <div className="flex flex-col items-center py-1">
         <p className="text-white text-4xl  text-center italic select-none py-5">
           About Me

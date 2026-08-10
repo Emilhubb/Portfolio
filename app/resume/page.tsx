@@ -1,9 +1,9 @@
-import React from 'react'
+import ResumeDetails from "@/components/detailComponents/resumepage/ResumeDetails";
 
-const Resume = () => {
+export default function Resume() {
   return (
-    <div>Resume</div>
-  )
+    <>
+      <ResumeDetails />
+    </>
+  );
 }
-
-export default Resume

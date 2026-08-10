@@ -59,7 +59,7 @@ const FeaturedProjects: React.FC = () => {
             key={idx}
             href={project.link}
             target="_blank"
-            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-300 overflow-hidden"
+            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] "
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-500/5 pointer-events-none z-10" />
 

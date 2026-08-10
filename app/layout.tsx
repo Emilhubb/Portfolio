@@ -4,7 +4,7 @@ import { Black_Ops_One, Geist } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { BackgroundBeams } from "@/components/ui/beams";
-import Navbar from "@/components/navbar components/Navbar"; // ← import your navbar
+import Navbar from "@/components/navbar components/Navbar";
 import AboutMe from "@/components/about me components/AboutMe";
 import PortfolioCard from "@/components/about me components/PortfolioCard";
 
