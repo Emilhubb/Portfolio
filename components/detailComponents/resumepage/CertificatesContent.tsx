@@ -141,9 +141,7 @@ export default function CertificatesSection() {
                   {cert.title}
                 </h3>
 
-                <span className="shrink-0 text-xs font-medium px-2.5 py-1 rounded-md  text-(--primary-color) shadow-[0_0_10px_rgba(59,130,246,0.3)] group-hover:bg-(--primary-color) group-hover:text-white transition-all">
-                  🔍 Preview
-                </span>
+            
               </div>
 
               <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400 mb-3">
