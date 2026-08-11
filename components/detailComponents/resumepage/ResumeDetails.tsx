@@ -1,10 +1,12 @@
 import React from 'react'
-import EducationContext from './EducationContext'
+import EducationContext from './EducationContent'
+import ExperienceContent from './ExperienceContent'
 
 const ResumeDetails = () => {
   return (
     <div>
       <EducationContext/>
+      <ExperienceContent/>
     </div>
   )
 }

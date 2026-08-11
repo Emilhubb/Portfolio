@@ -22,7 +22,7 @@ const EducationContext = () => {
       institution: "Azerbaijan State Oil and Industry University (ASOIU)",
       status: "In Progress..",
       metrics: {
-        entranceScore: "69.5 / 100",
+        entranceScore: "69.5",
       },
     },
     {
@@ -32,15 +32,16 @@ const EducationContext = () => {
       institution: "Azerbaijan State Oil and Industry University (ASOIU)",
       status: "Graduated",
       metrics: {
-        gpa: "3.7 / 4.0",
-        thesisScore: "95 / 100",
+        entranceScore: "574",
+        gpa: "3.7",
+        thesisScore: "95",
       },
     },
   ];
   return (
     <div className="w-full  rounded-lg p-6 my-5  select-none">
       <div className="flex flex-col gap-4 mb-10">
-        <span className="text-4xl font-bold text-(--primary-color)">
+        <span className="text-4xl font-bold text-(--primary-color) drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
           # Education
         </span>
       </div>
