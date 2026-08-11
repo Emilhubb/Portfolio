@@ -166,7 +166,6 @@ export default function CertificatesSection() {
         ))}
       </div>
 
-      {/* Modal - Document Body-yə Portal edilir */}
       {mounted &&
         selectedCert &&
         createPortal(
