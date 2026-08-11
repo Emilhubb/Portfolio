@@ -75,7 +75,7 @@ const EducationContext = () => {
               {edu.metrics && (
                 <div className="flex gap-4">
                   {edu.metrics.entranceScore && (
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-md border border-blue-500/30 bg-blue-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-md  backdrop-blur-sm shadow-[0_2px_1px_rgba(59,130,246,0.2)]">
                       <span className="text-sm font-semibold text-blue-400">
                         Entrance Score:
                       </span>
@@ -86,7 +86,7 @@ const EducationContext = () => {
                   )}
 
                   {edu.metrics.gpa && (
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-md border border-blue-500/30 bg-blue-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-md  backdrop-blur-sm shadow-[0_2px_1px_rgba(59,130,246,0.2)]">
                       <span className="text-sm font-semibold text-blue-400">
                         GPA:
                       </span>
@@ -97,7 +97,7 @@ const EducationContext = () => {
                   )}
 
                   {edu.metrics.thesisScore && (
-                    <div className="flex items-center gap-2 px-4 py-2 rounded-md border border-blue-500/30 bg-blue-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-md  backdrop-blur-sm shadow-[0_2px_1px_rgba(59,130,246,0.2)]">
                       <span className="text-sm font-semibold text-blue-400">
                         Thesis Score:
                       </span>

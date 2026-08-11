@@ -138,10 +138,10 @@ const ExperienceContent = () => {
       {ExperienceData.map((experience) => (
         <div
           key={experience.id}
-          className="group relative flex flex-col gap-3 mb-6 p-5 border-2 rounded-l-xl border-(--border-color) 
-             bg-(--secondary-color) rounded-r-xl border-b-2
-             hover:border-r-(--border-color) hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] 
-             hover:-translate-y-0.5 transition-all duration-300 ease-out"
+          className="group relative flex flex-col gap-3 mb-6 p-5 border-l-2 rounded-l-xl border-(--border-color) 
+             bg-(--secondary-color) rounded-r-xl hover:border-b-2  
+             hover:border-r-(--border-color) hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] 
+             hover:-translate-y-0.5 transition-all"
         >
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
             <div className="flex flex-col gap-1">
@@ -180,7 +180,7 @@ const ExperienceContent = () => {
             {experience.skills.map((skill, index) => (
               <span
                 key={index}
-                className="text-blue-700 border border-(--primary-color)/30 
+                className="text-blue-700 shadow-[0_2px_1px_rgba(59,130,246,0.2)]
                    text-xs font-medium px-2.5 py-1 rounded-md hover:bg-(--primary-color) 
                    hover:text-white transition-all duration-200 cursor-default"
               >
