@@ -145,7 +145,7 @@ export default function CertificatesSection() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400 mb-3">
-                <span className="font-semibold text-neutral-300">
+                <span className="font-semibold text-cyan-700">
                   {cert.issuer}
                 </span>
                 <span>•</span>
@@ -153,7 +153,7 @@ export default function CertificatesSection() {
                 {cert.badge && (
                   <>
                     <span>•</span>
-                    <span className="text-cyan-500 font-medium">
+                    <span className=" font-medium">
                       {cert.badge}
                     </span>
                   </>

@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={cn("h-full", "antialiased", blackOpsOne.variable, "font-sans")}
     >
       <body className="min-h-full  relative bg-black">

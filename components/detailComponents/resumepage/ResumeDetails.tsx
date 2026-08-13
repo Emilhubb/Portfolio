@@ -3,6 +3,7 @@ import EducationContext from './EducationContent'
 import ExperienceContent from './ExperienceContent'
 import TechStackContext from './SkillsContent'
 import CertificatesSection from './CertificatesContent'
+import ReferencesContent from './ReferencesContent'
 
 const ResumeDetails = () => {
   return (
@@ -11,6 +12,7 @@ const ResumeDetails = () => {
       <ExperienceContent/>
       <TechStackContext/>
       <CertificatesSection/>
+      <ReferencesContent/>
     </div>
   )
 }
