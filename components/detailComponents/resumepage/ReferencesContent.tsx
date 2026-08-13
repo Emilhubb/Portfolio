@@ -1,5 +1,8 @@
+'use client'
 import React from "react";
+import { useState, useEffect } from "react";
 import { StaticImageData } from "next/image";
+import { createPortal } from "react-dom";
 
 import TuralITU from "../../../public/references/TuralITU.jpg";
 import ShahinITU from "../../../public/references/itu.jpg";
@@ -8,6 +11,16 @@ import ShahinWUF13 from "../../../public/references/wuf13.png";
 import { Send } from "lucide-react";
 
 const ReferencesContent = () => {
+  const [selectedRef, setSelectedRef] = useState<Reference | null>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const getImageSrc = (img: string | StaticImageData) => {
+    return typeof img === "string" ? img : img.src;
+  };
+
   interface Reference {
     id: number;
     name: string;
@@ -59,6 +72,7 @@ const ReferencesContent = () => {
           {References.map((reference) => (
             <div
               key={reference.id}
+              onClick={() => setSelectedRef(reference)}
               className=" group shadow-[0_2px_25px_rgba(59,130,246,0.2)] p-4 rounded-lg"
             >
               <h3 className="text-xl font-bold text-white group-hover:text-blue-700 transition-colors">
@@ -94,6 +108,64 @@ const ReferencesContent = () => {
             </div>
           ))}
         </div>
+
+        {mounted &&
+          selectedRef &&
+          createPortal(
+            <div
+              className="fixed inset-0 z-9999 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+              onClick={() => setSelectedRef(null)}
+            >
+              <div
+                className="relative max-w-4xl w-full bg-(--secondary-color) border border-(--primary-color)/40 
+                                 rounded-2xl p-6 shadow-[0_0_30px_rgba(59,130,246,0.25)] flex flex-col gap-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                  <div>
+                    <h4 className="text-lg font-bold text-white">
+                      {selectedRef.name}
+                    </h4>
+
+                  </div>
+                  <button
+                    onClick={() => setSelectedRef(null)}
+                    className="text-neutral-400 hover:text-white hover:bg-white/10 px-3 py-1 rounded-lg text-sm font-bold transition-all cursor-pointer"
+                  >
+                    ✕ Close
+                  </button>
+                </div>
+                <div className="relative w-full max-h-[70vh]  rounded-xl border border-white/5 bg-black/40 flex flex-col md:flex-row items-center justify-center gap-4 p-4">
+                  {Array.isArray(selectedRef.image) ? (
+                    selectedRef.image.map((img, index) => (
+                      <img
+                        key={index}
+                        src={getImageSrc(img)}
+                        alt={`${selectedRef.name} - ${index + 1}`}
+                        className="w-full md:w-1/2 h-auto object-contain rounded-lg border border-white/10"
+                      />
+                    ))
+                  ) : selectedRef.image ? (
+                    <img
+                      src={getImageSrc(selectedRef.image)}
+                      alt={selectedRef.name}
+                      className="max-h-[60vh] w-auto object-contain rounded-lg"
+                    />
+                  ) : (
+                    <div className="py-12 text-center text-neutral-400 text-sm font-mono">
+                      📷 Preview image not uploaded yet.
+                    </div>
+                  )}
+                </div>
+                <div className="flex justify-between items-center text-xs text-neutral-400 pt-1">
+                  <span className="font-mono text-[11px] text-neutral-500">
+                    Click anywhere outside to exit
+                  </span>
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )}
       </div>
     </>
   );
