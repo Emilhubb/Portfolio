@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import { useState, useEffect } from "react";
 import { StaticImageData } from "next/image";
@@ -72,13 +72,21 @@ const ReferencesContent = () => {
           {References.map((reference) => (
             <div
               key={reference.id}
-              onClick={() => setSelectedRef(reference)}
               className=" group shadow-[0_2px_25px_rgba(59,130,246,0.2)] p-4 rounded-lg"
             >
-              <h3 className="text-xl font-bold text-white group-hover:text-blue-700 transition-colors">
-                {reference.name}
-              </h3>
-              <p className="text-sm text-white/70">{reference.position}</p>
+              <div className="flex justify-between">
+                <h3 className="text-xl font-bold text-white group-hover:text-blue-700 transition-colors">
+                  {reference.name}
+                </h3>
+                <button
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400  bg-blue-500/10  px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit hover:text-blue-700 hover:bg-blue-500/8 cursor-pointer hover:scale-102"
+                  onClick={() => setSelectedRef(reference)}
+                >
+                  {" "}
+                  Preview{" "}
+                </button>
+              </div>
+              <p className="text-sm text-white/70 py-2">{reference.position}</p>
               <p className="text-sm text-cyan-700 py-2">
                 {Array.isArray(reference.company)
                   ? reference.company.join(", ")
@@ -89,7 +97,7 @@ const ReferencesContent = () => {
                 {reference.email && (
                   <a
                     href={`mailto:${reference.email}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 group-hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
                   >
                     <Send className="w-2.5 h-2.5 text-blue-500 hover:text-blue-400 transition-colors" />{" "}
                     Email
@@ -99,7 +107,7 @@ const ReferencesContent = () => {
                   <a
                     href={reference.linkedin}
                     target="window"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 group-hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
                   >
                     Linkedin
                   </a>
@@ -126,7 +134,6 @@ const ReferencesContent = () => {
                     <h4 className="text-lg font-bold text-white">
                       {selectedRef.name}
                     </h4>
-
                   </div>
                   <button
                     onClick={() => setSelectedRef(null)}
