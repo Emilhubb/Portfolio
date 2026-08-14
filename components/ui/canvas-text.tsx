@@ -15,6 +15,7 @@ interface CanvasTextProps {
 }
 
 function resolveColor(color: string): string {
+  if (typeof window === "undefined") return color;
   if (color.startsWith("var(")) {
     const varName = color.slice(4, -1).trim();
     const resolved = getComputedStyle(document.documentElement)
@@ -24,6 +25,7 @@ function resolveColor(color: string): string {
   }
   return color;
 }
+
 const DEFAULT_COLORS = [
   "#ff6b6b",
   "#4ecdc4",
@@ -82,12 +84,16 @@ export function CanvasText({
     const updateDimensions = () => {
       const rect = textEl.getBoundingClientRect();
       const computed = window.getComputedStyle(textEl);
+
+      const PADDING = 12;
+
       setDimensions({
-        width: Math.ceil(rect.width) || 400,
+        width: Math.ceil(rect.width) + PADDING,
         height: Math.ceil(rect.height) || 200,
       });
+
       setFont(
-        ` ${computed.fontStyle} ${computed.fontWeight} ${computed.fontSize} ${computed.fontFamily}`,
+        `${computed.fontStyle} ${computed.fontWeight} ${computed.fontSize} ${computed.fontFamily}`,
       );
     };
 
@@ -96,7 +102,12 @@ export function CanvasText({
     const resizeObserver = new ResizeObserver(updateDimensions);
     resizeObserver.observe(textEl);
 
-    return () => resizeObserver.disconnect();
+    window.addEventListener("resize", updateDimensions);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateDimensions);
+    };
   }, [text, className]);
 
   useEffect(() => {
@@ -115,13 +126,13 @@ export function CanvasText({
     const { width, height } = dimensions;
     const dpr = window.devicePixelRatio || 1;
 
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
 
     ctx.font = font;
     const metrics = ctx.measureText(text);
-    const ascent = metrics.actualBoundingBoxAscent;
-    const descent = metrics.actualBoundingBoxDescent;
+    const ascent = metrics.actualBoundingBoxAscent || 20;
+    const descent = metrics.actualBoundingBoxDescent || 5;
     const baselineY = (height + ascent - descent) / 2;
 
     const numLines = Math.floor(height / lineGap) + 10;
@@ -139,6 +150,7 @@ export function CanvasText({
       ctx.textBaseline = "alphabetic";
       ctx.textAlign = "left";
       ctx.fillStyle = "#000";
+
       ctx.fillText(text, 0, baselineY);
 
       ctx.globalCompositeOperation = "source-in";
@@ -205,15 +217,21 @@ export function CanvasText({
         )}
         aria-hidden="true"
       />
-      <span ref={textRef} className="invisible inline-block" aria-hidden="true">
+
+      <span
+        ref={textRef}
+        className="invisible inline-block whitespace-nowrap pr-2"
+        aria-hidden="true"
+      >
         {text}
       </span>
+
       <canvas
         ref={canvasRef}
         className="pointer-events-none absolute top-0 left-0"
         style={{
-          width: dimensions.width || "auto",
-          height: dimensions.height || "auto",
+          width: dimensions.width ? `${dimensions.width}px` : "auto",
+          height: dimensions.height ? `${dimensions.height}px` : "auto",
         }}
         aria-label={text}
         role="img"

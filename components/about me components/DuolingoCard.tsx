@@ -46,7 +46,7 @@ export default function DuolingoCard() {
 
   useEffect(() => {
     fetch(
-      "https://android-api-cf.duolingo.com/2017-06-30/users?username=emilkaziml",
+      "/api/duolingo",
     )
       .then((res) => res.json())
       .then((data: { users?: DuolingoStats[]; error?: string }) => {
