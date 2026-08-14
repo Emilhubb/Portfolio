@@ -6,7 +6,20 @@
 html {
   --font-sans: var(--font-black-ops-one);
 }
-
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: rotate 4s linear infinite;
+}
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
