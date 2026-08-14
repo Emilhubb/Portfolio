@@ -8,7 +8,7 @@ import DownloadCVContent from './DownloadCVContent'
 
 const ResumeDetails = () => {
   return (
-    <div>
+    <div className='bg-transparent backdrop-blur-[10px]'>
       <EducationContext/>
       <ExperienceContent/>
       <TechStackContext/>
