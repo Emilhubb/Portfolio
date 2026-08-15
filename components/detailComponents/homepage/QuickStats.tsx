@@ -64,23 +64,23 @@ export function QuickStats() {
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto my-10 select-none">
+    <div className="w-full max-w-5xl mx-auto my-10 select-none max-md:mt-25">
       <div className="flex items-center px-5 mb-6">
         <span className="w-1 h-1 mx-5 rounded-full bg-blue-500 shadow-[0_0_10px_3px] shadow-blue-500" />
         <h2 className="text-white font-bold text-3xl tracking-wide">
           Quick Stats
         </h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 max-sm:grid-cols-2 max-md:grid-cols-1 lg:grid-cols-3 gap-4 max-md:gap-2 max-2xl:px-4  max-md:p-5">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
             <div
               key={stat.id}
-              className="group relative flex flex-col justify-between p-5 rounded-xl border border-(--border-color) bg-black/40 backdrop-blur-md hover:border-blue-500 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 hover:transition-transform hover:scale-103 transform-gpu  shadow-sky-500/20 shadow-[0px_2px_25px_0px] "
+              className="group relative flex flex-col max-md:shadow-[0_3px_200px_rgba(56,189,248,0.55)] justify-between p-5 rounded-xl border border-(--border-color) bg-black/40 backdrop-blur-md hover:border-blue-500 hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 hover:transition-transform hover:scale-103 transform-gpu  shadow-sky-500/20 shadow-[0px_2px_25px_0px] "
             >
               <div className="flex items-center justify-between">
-                <span className="text-zinc-400 text-xs font-mono uppercase tracking-wider">
+                <span className="text-zinc-400 text-xs max-md:text-[14px] font-mono uppercase tracking-wider ">
                   {stat.title}
                 </span>
                 <Icon
@@ -89,10 +89,10 @@ export function QuickStats() {
               </div>
 
               <div className="mt-4">
-                <h3 className="text-3xl font-extrabold text-blue-700 tracking-tight">
+                <h3 className="text-3xl max-md:text-[33px] font-extrabold text-blue-700 tracking-tight">
                   {stat.value}
                 </h3>
-                <p className="text-zinc-400 text-xs mt-1.5 leading-relaxed italic">
+                <p className="text-zinc-400 text-xs max-md:text-[15px]  mt-1.5 leading-relaxed italic">
                   {stat.description}
                 </p>
               </div>

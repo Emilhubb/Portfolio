@@ -25,13 +25,13 @@ const LanguageList = () => {
     <>
       <ul className="flex flex-col p-4 gap-4 w-full py-4 ">
         {languages.map((lang) => (
-          <li key={lang.name} className="flex items-center gap-2">
+          <li key={lang.name} className="flex items-center gap-2 ">
             <Image
               src={lang.flag}
               alt={`${lang.name} flag`}
               className="w-5 h-5 rounded-full object-cover shrink-0"
             />
-            <span className="text-white text-xl select-none ">{lang.name}</span>
+            <span className="text-white text-xl select-none max-md:text-2xl">{lang.name}</span>
           </li>
         ))}
       </ul>
@@ -53,7 +53,7 @@ const LanguageList = () => {
         </li>
       </ul>
       {toggleDuolingoCard && (
-        <div className="mt-4 px-4 mb-8 bg-transparent backdrop-blur-[10px]">
+        <div className="mt-4 px-4 mb-8 bg-transparent backdrop-blur-[10px] max-md:flex max-md:w-full ">
           <DuolingoCard />
         </div>
       )}

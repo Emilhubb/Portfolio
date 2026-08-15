@@ -11,8 +11,8 @@ const AboutMe = () => {
         <span className="longline block w-full h-px bg-(--border-color) "></span>
       </div>
 
-      <div className="h-80 py-5 ">
-        <p className="text-zinc-100 text-center  leading-8 whitespace-pre-line select-none">
+      <div className="h-80 max-md:h-auto py-5 ">
+        <p className="text-zinc-100 text-center max-md:text-2xl    leading-8 whitespace-pre-line select-none">
           {
             "A 21-year-old living in Baku, chasing his dreams and busy with coding. If you can't reach me, i'm probably busy with coding or my gf. Just a guy who values routine, respects the grind, and stays quiet while working on big things.\n Welcome to my personal space"
           }

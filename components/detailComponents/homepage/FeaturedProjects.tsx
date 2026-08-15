@@ -46,40 +46,40 @@ const projects: Project[] = [
 
 const FeaturedProjects: React.FC = () => {
   return (
-    <div className="w-full max-w-5xl h-auto mx-auto my-24 select-none">
+    <div className="w-full max-w-5xl h-auto mx-auto my-24 select-none max-md:my-0 max-md:mt-15">
       <div className="flex items-center px-5 mb-6">
         <span className="w-1 h-1 mx-5 rounded-full bg-blue-500 shadow-[0_0_10px_3px] shadow-blue-500 animate-pulse" />
         <h2 className="text-white font-bold text-3xl tracking-wide">
           Featured Projects
         </h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2">
+      <div className="grid grid-cols-1 max-sm:grid-cols-1 max-md:grid-cols-1 max-md:gap-0 lg:grid-cols-3 gap-4 px-2 max-2xl:px-4">
         {projects.map((project: Project, idx: number) => (
           <a
             key={idx}
             href={project.link}
             target="_blank"
-            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] "
+            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] max-md:m-5 max-md:h-100 max-sm:h-100"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-500/5 pointer-events-none z-10" />
 
-            <div className="relative w-full h-40 overflow-hidden border-b border-(--border-color)">
+            <div className="relative w-full h-40 overflow-hidden border-b border-(--border-color) max-md:h-60">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover max-md:object-center group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
             </div>
 
-            <div className="p-5">
+            <div className="p-5 max-md:py-5 ">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-white font-bold text-lg group-hover:text-blue-400 transition-colors">
+                <h3 className="text-white font-bold text-lg group-hover:text-blue-400 transition-colors max-md:text-[24px]">
                   {project.title}
                 </h3>
-                <span className="text-blue-500 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+                <span className="text-blue-500  opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
                   {project.icon}
                 </span>
               </div>
@@ -97,9 +97,6 @@ const FeaturedProjects: React.FC = () => {
                   </span>
                 ))}
               </div>
-              <span className="absolute bottom-5 right-5 text-blue-500 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
-                →
-              </span>
             </div>
           </a>
         ))}

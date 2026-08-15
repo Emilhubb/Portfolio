@@ -6,8 +6,8 @@ const TypeWriter = () => {
     { text: "Kazımov", className: "text-[var(--border-color)]" },
   ];
   return (
-    <div className="-my-4 bg-black/30">
-      <TypewriterEffect words={words} className="font-blackops select-none text-[2rem]" />
+    <div className="-my-4 max-md:relative   bg-black/30">
+      <TypewriterEffect words={words} className="font-blackops select-none text-[2rem] max-md:text-4xl" />
     </div>
   );
 };

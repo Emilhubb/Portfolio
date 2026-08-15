@@ -72,7 +72,7 @@ export function ContactContent() {
   return (
     <>
       <div className="mx-auto text-center my-15 ">
-        <p className="text-4xl italic">Say hello! My inbox is always open.</p>
+        <p className="text-4xl italic px-10">Say hello! <br/> My inbox is always open.</p>
       </div>
       <div className="relative max-w-2xl mx-auto rounded-2xl my-10  bg-transparent backdrop-blur-[6px] shadow-[0_2px_30px_rgba(59,130,246,0.2)] p-10">
         <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
@@ -93,7 +93,7 @@ export function ContactContent() {
                 onChange={() => setMethod("email")}
                 className="accent-blue-500/10 w-4 h-4"
               />
-              <span className="text-white text-sm font-medium">Via Email</span>
+              <span className="text-white text-sm font-medium max-md:text-[18px]">Via Email</span>
             </label>
 
             <label
@@ -109,7 +109,7 @@ export function ContactContent() {
                 onChange={() => setMethod("telegram")}
                 className="accent-blue-500 w-4 h-4"
               />
-              <span className="text-white text-sm font-medium">
+              <span className="text-white text-sm font-medium max-md:text-[18px]">
                 Via Telegram
               </span>
             </label>
@@ -180,7 +180,7 @@ export function ContactContent() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg hover:opacity-90 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition disabled:opacity-50"
+            className="w-full py-3 px-6 bg-linear-to-r max-md:text-[25px] from-blue-600 to-indigo-600 text-white font-bold rounded-lg hover:opacity-90 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition disabled:opacity-50"
           >
             {loading ? "Sending..." : "Send Message"}
           </button>

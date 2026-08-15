@@ -67,7 +67,7 @@ const TechStackContext = () => {
             <div>
               <div className="flex items-center gap-3 mb-5 border-b border-white/5 pb-3">
                 <span className="text-2xl">{category.icon}</span>
-                <h3 className="text-lg font-bold text-white group-hover:text-blue-700 transition-colors">
+                <h3 className="text-lg max-md:text-2xl max-2xl:text-[20px] font-bold text-white group-hover:text-blue-700 transition-colors">
                   {category.title}
                 </h3>
               </div>
@@ -76,7 +76,7 @@ const TechStackContext = () => {
                 {category.skills.map((skill, skillIdx) => (
                   <span
                     key={skillIdx}
-                    className="text-xs font-medium px-3 py-1.5 rounded-lg bg-transparent backdrop-blur-xl shadow-[0_2px_10px_rgba(59,130,246,0.2)]
+                    className="text-xs font-medium max-md:text-[15px] px-3 py-1.5 rounded-lg bg-transparent backdrop-blur-xl shadow-[0_2px_10px_rgba(59,130,246,0.2)]
                                text-blue-700 group-hover:text-white group-hover:border-(--primary-color)/50 
                                transition-all duration-200 cursor-default"
                   >

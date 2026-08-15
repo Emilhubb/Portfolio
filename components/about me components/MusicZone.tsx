@@ -11,7 +11,7 @@ const MusicZone = () => {
       </div>
 
       <div className="py-1 mt-5 ">
-        <p className="text-zinc-100 text-center italic leading-8 whitespace-pre-line select-none">
+        <p className="text-zinc-100 text-center italic leading-8 whitespace-pre-line select-none max-md:text-xl">
           Wanna take a sip of my playlist?
         </p>
       </div>

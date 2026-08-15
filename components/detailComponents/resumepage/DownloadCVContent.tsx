@@ -11,7 +11,7 @@ const DownloadCVContent = () => {
           className="relative w-full bg-slate-950 p-6 rounded-[10px] text-center z-10 hover:opacity-95 transition-colors bg-linear-to-br from-violet-950/10 to-indigo-950/90 cursor-pointer  "
         >
           <a href={"EmilKazimovCV.pdf"} download={"Portfolio-EmilKazimovCV.pdf"} className="text-white font-bold text-lg tracking-wide flex items-center justify-center gap-2">
-            <span className="drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+            <span className="drop-shadow-[0_0_8px_rgba(59,130,246,0.8)] max-md:text-[30px]">
               Download CV
             </span>
           </a>

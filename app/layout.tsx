@@ -34,18 +34,18 @@ export default function RootLayout({
         <div className="absolute inset-0 -z-30 pointer-events-none will-change-transform transform-gpu backface-hidden">
           <BackgroundBeams className="pointer-events-none -z-30" />
         </div>
-        <div className="flex w-full min-h-screen p-4 sm:p-6 text-white animate-fade-up">
+        <div className="flex w-full min-h-screen md:flex-row max-sm:flex-col max-sm:px-5 sm:flex-col lg:p-4 sm:p-6 text-white animate-fade-up">
           <div className="flex flex-col justify-center md:justify-start md:flex-row items-center md:items-start gap-8">
             <PortfolioCard />
           </div>
-          <div className="flex flex-col w-full h-fit gap-20 mt-5 ml-10 mr-10">
+          <div className="flex flex-col w-full h-fit gap-20 mt-5 ml-10 mr-10 max-md:m-0 max-md:my-15">
             <div className="border-2 border-(--border-color)">
               <Navbar />
             </div>
             <main className="border-2 border-(--border-color)">{children}</main>
           </div>
         </div>
-          <div className="mt-8 p-4 border-t border-slate-800/80 w-full flex items-center justify-center text-xs text-slate-400 select-none">
+          <div className="mt-8 p-4 border-t border-slate-800/80 w-full flex items-center justify-center text-xs max-md:text-xl text-slate-400 select-none">
             <p>© 2026 Emil Kazımov</p>
           </div>
         

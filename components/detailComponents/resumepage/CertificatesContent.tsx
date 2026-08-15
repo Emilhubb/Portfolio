@@ -131,29 +131,27 @@ export default function CertificatesSection() {
           <div
             key={cert.id}
             onClick={() => setSelectedCert(cert)}
-            className="group relative flex flex-col justify-between p-5 rounded-md shadow-[0_2px_10px_rgba(59,130,246,0.3)] hover:border-(--primary-color) 
+            className="group relative flex flex-col  justify-between p-5 rounded-md shadow-[0_2px_10px_rgba(59,130,246,0.3)] hover:border-(--primary-color) 
                        hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:-translate-y-0.5 
                        transition-all duration-300 cursor-pointer overflow-hidden"
           >
             <div>
               <div className="flex justify-between items-start gap-3 mb-2">
-                <h3 className="text-base font-bold text-white group-hover:text-blue-700 transition-colors leading-snug">
+                <h3 className="text-base max-md:text-2xl max-2xl:text-[20px] font-bold text-white group-hover:text-blue-700 transition-colors leading-snug">
                   {cert.title}
                 </h3>
-
-            
               </div>
 
               <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400 mb-3">
-                <span className="font-semibold text-cyan-700">
+                <span className="font-semibold max-md:text-[15px] max-2xl:text-[15px] text-cyan-700">
                   {cert.issuer}
                 </span>
                 <span>•</span>
-                <span>{cert.issueDate}</span>
+                <span className="max-md:text-[15px] max-2xl:text-[14px]">{cert.issueDate}</span>
                 {cert.badge && (
                   <>
                     <span>•</span>
-                    <span className=" font-medium">
+                    <span className=" font-medium max-md:text-[15px] max-2xl:text-[15px] ">
                       {cert.badge}
                     </span>
                   </>

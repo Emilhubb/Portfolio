@@ -24,7 +24,7 @@ const socials = [
 const SocialList = () => {
   return (
     <>
-      <ul className="flex flex-col gap-2 w-full mt-5 ">
+      <ul className="flex flex-col gap-2 w-full mt-5 max-md:mt-0 ">
         {socials.map((social) => (
           <li key={social.name} className="flex items-center gap-2 transition-transform duration-400 hover:scale-105">
             <Image
@@ -32,7 +32,7 @@ const SocialList = () => {
               alt="Icon"
               className="w-5 h-5 rounded-full object-cover shrink-0"
             />
-            <a className="text-white text-md select-none " href={social.href} target="window">
+            <a className="text-white text-md select-none max-md:text-2xl" href={social.href} target="window">
               {social.name}
             </a>
           </li>
