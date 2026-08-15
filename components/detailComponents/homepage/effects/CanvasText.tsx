@@ -17,7 +17,7 @@ export function CanvasTextDemo() {
     <div className="flex min-h-70 w-full  flex-col items-center justify-center p-8 text-center">
       <h2
         className={cn(
-          "group relative mx-auto max-w-4xl text-center italic text-4xl font-bold tracking-tighter  max-md:text-[68px] md:text-6xl xl:text-[80px] text-gray-200 dark:text-neutral-100"
+          "group relative mx-auto max-w-4xl text-center italic text-4xl font-bold tracking-tighter  max-md:text-[68px] max-sm:text-[50px] md:text-6xl xl:text-[80px] text-gray-200 dark:text-neutral-100"
         )}
       >
         {greeting}

@@ -13,7 +13,7 @@ export function StatusBanner() {
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-sky-500 shadow-[0_0_10px_#38bdf8]"></span>
         </div>
 
-        <p className="text-xs text-zinc-300 font-medium tracking-wide select-none max-md:text-xl">
+        <p className="text-xs text-zinc-300 font-medium tracking-wide select-none max-md:text-xl max-sm:text-[17px]">
           Currently working on:{" "}
           <span className="text-sky-400 font-semibold underline underline-offset-4 decoration-sky-500/40 hover:decoration-sky-400 transition-colors">
             Portfolio Web Page
