@@ -62,7 +62,7 @@ const TechStackContext = () => {
           >
             <div>
               <div className="flex items-center gap-3 mb-5 border-b border-white/5 pb-3">
-                <h3 className="text-lg max-md:text-2xl max-sm:text-xl max-2xl:text-[20px] font-bold text-white group-hover:text-blue-700 transition-colors">
+                <h3 className="text-[15px] sm:text-base lg:text-lg 2xl:text-[20px] font-bold text-white group-hover:text-blue-700 transition-colors break-words">
                   {category.title}
                 </h3>
               </div>

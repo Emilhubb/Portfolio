@@ -86,7 +86,9 @@ const ReferencesContent = () => {
                   Preview{" "}
                 </button>
               </div>
-              <p className="text-sm text-white/70 py-2 max-md:text-[18px] max-sm:text-[15px]">{reference.position}</p>
+              <p className="text-sm text-white/70 py-2 max-md:text-[18px] max-sm:text-[15px]">
+                {reference.position}
+              </p>
               <p className="text-sm text-cyan-700 py-2 max-md:text-[15px] max-sm:text-[15px]">
                 {Array.isArray(reference.company)
                   ? reference.company.join(", ")
@@ -121,51 +123,52 @@ const ReferencesContent = () => {
           selectedRef &&
           createPortal(
             <div
-              className="fixed inset-0 z-9999 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+              className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md animate-fadeIn overflow-y-auto"
               onClick={() => setSelectedRef(null)}
             >
               <div
-                className="relative max-w-4xl w-full bg-(--secondary-color) border border-(--primary-color)/40 
-                                 rounded-2xl p-6 shadow-[0_0_30px_rgba(59,130,246,0.25)] flex flex-col gap-4"
+                className="relative w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl max-h-[90vh] overflow-y-auto bg-(--secondary-color) border border-(--primary-color)/40 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-[0_0_30px_rgba(59,130,246,0.25)] flex flex-col gap-3 sm:gap-4 my-auto"
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                  <div>
-                    <h4 className="text-lg font-bold text-white">
+                <div className="flex justify-between items-center border-b border-white/10 pb-2 sm:pb-3 gap-2">
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-base sm:text-lg font-bold text-white truncate">
                       {selectedRef.name}
                     </h4>
                   </div>
                   <button
                     onClick={() => setSelectedRef(null)}
-                    className="text-neutral-400 hover:text-white hover:bg-white/10 px-3 py-1 rounded-lg text-sm font-bold transition-all cursor-pointer"
+                    className="text-neutral-400 hover:text-white hover:bg-white/10 px-2.5 py-1 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer shrink-0"
                   >
                     ✕ Close
                   </button>
                 </div>
-                <div className="relative w-full max-h-[70vh]  rounded-xl border border-white/5 bg-black/40 flex flex-col md:flex-row items-center justify-center gap-4 p-4">
+
+                <div className="relative w-full max-h-[70vh] sm:max-h-[65vh]  rounded-xl border border-white/5 bg-black/40 flex flex-col md:flex-row items-center justify-center gap-3 sm:gap-4 p-3 sm:p-4 overflow-y-auto">
                   {Array.isArray(selectedRef.image) ? (
                     selectedRef.image.map((img, index) => (
                       <img
                         key={index}
                         src={getImageSrc(img)}
                         alt={`${selectedRef.name} - ${index + 1}`}
-                        className="w-full md:w-1/2 h-auto object-contain rounded-lg border border-white/10"
+                        className="w-full max-md:w-full max-h-[40vh] max-md:pt-10 object-contain rounded-lg border border-white/10"
                       />
                     ))
                   ) : selectedRef.image ? (
                     <img
                       src={getImageSrc(selectedRef.image)}
                       alt={selectedRef.name}
-                      className="max-h-[60vh] w-auto object-contain rounded-lg"
+                      className="max-h-[45vh] sm:max-h-[55vh] md:max-h-[60vh] w-auto max-w-full object-contain rounded-lg"
                     />
                   ) : (
-                    <div className="py-12 text-center text-neutral-400 text-sm font-mono">
+                    <div className="py-8 sm:py-12 text-center text-neutral-400 text-xs sm:text-sm font-mono">
                       📷 Preview image not uploaded yet.
                     </div>
                   )}
                 </div>
+
                 <div className="flex justify-between items-center text-xs text-neutral-400 pt-1">
-                  <span className="font-mono text-[11px] text-neutral-500">
+                  <span className="font-mono text-[10px] sm:text-[11px] text-neutral-500">
                     Click anywhere outside to exit
                   </span>
                 </div>

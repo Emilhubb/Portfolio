@@ -77,8 +77,7 @@ export function ContactContent() {
         </p>
       </div>
       <div className="relative max-w-2xl mx-auto rounded-2xl my-10  bg-transparent backdrop-blur-[6px] shadow-[0_2px_30px_rgba(59,130,246,0.2)] p-10">
-        <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-indigo-500/10 blur-3xl" />
+      
 
         <form onSubmit={handleSubmit} className="relative space-y-4 text-left">
           <div className="flex gap-4 max-sm:gap-2 justify-center pb-2">
