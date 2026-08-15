@@ -2,7 +2,7 @@
 
 export function StatusBanner() {
   return (
-    <div className="w-full flex justify-center my-8">
+    <div className="w-full flex justify-center my-8 max-sm:px-5">
       
       <div className="relative group inline-flex items-center gap-3 rounded-full border border-(--border-color) bg-black/40 backdrop-blur-md px-5 py-2.5 shadow-lg shadow-blue-950/20 hover:border-blue-500/50 transition-all duration-300">
         

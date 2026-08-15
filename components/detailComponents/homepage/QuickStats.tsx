@@ -71,7 +71,7 @@ export function QuickStats() {
           Quick Stats
         </h2>
       </div>
-      <div className="grid grid-cols-1 max-sm:grid-cols-2 max-md:grid-cols-1 lg:grid-cols-3 gap-4 max-md:gap-2 max-2xl:px-4  max-md:p-5">
+      <div className="grid grid-cols-1 max-sm:grid-cols-1 max-sm:gap-2 max-md:grid-cols-1 lg:grid-cols-3 gap-4 max-md:gap-2 max-2xl:px-4  max-md:p-5">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
@@ -88,8 +88,8 @@ export function QuickStats() {
                 />
               </div>
 
-              <div className="mt-4">
-                <h3 className="text-3xl max-md:text-[33px] font-extrabold text-blue-700 tracking-tight">
+              <div className="mt-4 ">
+                <h3 className="text-3xl max-md:text-[33px] max-sm:text-[25px] text-wrap font-extrabold text-blue-700 tracking-tight">
                   {stat.value}
                 </h3>
                 <p className="text-zinc-400 text-xs max-md:text-[15px]  mt-1.5 leading-relaxed italic">

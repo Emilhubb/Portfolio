@@ -72,16 +72,18 @@ export function ContactContent() {
   return (
     <>
       <div className="mx-auto text-center my-15 ">
-        <p className="text-4xl italic px-10">Say hello! <br/> My inbox is always open.</p>
+        <p className="text-4xl italic px-10 max-sm:text-4xl">
+          Say hello! <br /> My inbox is always open.
+        </p>
       </div>
       <div className="relative max-w-2xl mx-auto rounded-2xl my-10  bg-transparent backdrop-blur-[6px] shadow-[0_2px_30px_rgba(59,130,246,0.2)] p-10">
         <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-indigo-500/10 blur-3xl" />
 
         <form onSubmit={handleSubmit} className="relative space-y-4 text-left">
-          <div className="flex gap-4 justify-center pb-2">
+          <div className="flex gap-4 max-sm:gap-2 justify-center pb-2">
             <label
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg border cursor-pointer backdrop-blur-sm transition ${
+              className={`flex items-center gap-2 max-sm:px-2 px-4 py-2 rounded-lg border cursor-pointer backdrop-blur-sm transition ${
                 method === "email"
                   ? "border-blue-500/10 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                   : "border-slate-800/60 bg-slate-900/40"
@@ -93,11 +95,13 @@ export function ContactContent() {
                 onChange={() => setMethod("email")}
                 className="accent-blue-500/10 w-4 h-4"
               />
-              <span className="text-white text-sm font-medium max-md:text-[18px]">Via Email</span>
+              <span className="text-white text-sm font-medium max-md:text-[18px] max-sm:text-[18px]">
+                Via Email
+              </span>
             </label>
 
             <label
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg border cursor-pointer backdrop-blur-sm transition ${
+              className={`flex items-center gap-2 px-4 py-2  max-sm:px-2 rounded-lg border cursor-pointer backdrop-blur-sm transition ${
                 method === "telegram"
                   ? "border-blue-500/10 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.3)]"
                   : "border-slate-800/60 bg-slate-900/40"
@@ -180,7 +184,7 @@ export function ContactContent() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 px-6 bg-linear-to-r max-md:text-[25px] from-blue-600 to-indigo-600 text-white font-bold rounded-lg hover:opacity-90 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition disabled:opacity-50"
+            className="w-full py-3  max-sm:text-[20px] px-6 bg-linear-to-r max-md:text-[25px] from-blue-600 to-indigo-600 text-white font-bold rounded-lg hover:opacity-90 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition disabled:opacity-50"
           >
             {loading ? "Sending..." : "Send Message"}
           </button>

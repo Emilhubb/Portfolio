@@ -32,7 +32,7 @@ const SocialList = () => {
               alt="Icon"
               className="w-5 h-5 rounded-full object-cover shrink-0"
             />
-            <a className="text-white text-md select-none max-md:text-2xl" href={social.href} target="window">
+            <a className="text-white text-md select-none max-md:text-2xl max-sm:text-xl" href={social.href} target="window">
               {social.name}
             </a>
           </li>

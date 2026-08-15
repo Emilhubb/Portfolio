@@ -49,7 +49,7 @@ export const CardContainer = ({
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
         className={cn(
-          "py-10 flex max-md:block max-md:w-full max-md:px-10 max-md:h-170  items-center justify-center",
+          "py-10 flex max-md:block max-md:w-full max-md:px-10 max-md:h-170 items-center justify-center max-sm:px-5 max-sm:h-150",
           containerClassName
         )}
         style={{

@@ -64,7 +64,7 @@ const ReferencesContent = () => {
     <>
       <div className="w-full rounded-lg p-6 select-none">
         <div className="flex flex-col gap-4 mb-10">
-          <span className="text-4xl font-bold text-(--primary-color) drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+          <span className="text-4xl max-sm:text-2xl font-bold text-(--primary-color) drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
             # References
           </span>
         </div>
@@ -75,19 +75,19 @@ const ReferencesContent = () => {
               className=" group shadow-[0_2px_25px_rgba(59,130,246,0.2)] p-4 rounded-lg"
             >
               <div className="flex justify-between">
-                <h3 className="text-xl max-md:text-[25px] font-bold text-white group-hover:text-blue-700 transition-colors">
+                <h3 className="text-xl max-md:text-[25px] max-sm:text-xl font-bold text-white group-hover:text-blue-700 transition-colors">
                   {reference.name}
                 </h3>
                 <button
-                  className="inline-flex items-center gap-1.5 text-xs max-md:text-[16px] font-medium text-blue-400  bg-blue-500/10  px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit hover:text-blue-700 hover:bg-blue-500/8 cursor-pointer hover:scale-102"
+                  className="inline-flex items-center gap-1.5 text-xs max-md:text-[16px] max-sm:text-[12px] font-medium text-blue-400  bg-blue-500/10  px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit hover:text-blue-700 hover:bg-blue-500/8 cursor-pointer hover:scale-102"
                   onClick={() => setSelectedRef(reference)}
                 >
                   {" "}
                   Preview{" "}
                 </button>
               </div>
-              <p className="text-sm text-white/70 py-2 max-md:text-[18px]">{reference.position}</p>
-              <p className="text-sm text-cyan-700 py-2 max-md:text-[15px]">
+              <p className="text-sm text-white/70 py-2 max-md:text-[18px] max-sm:text-[15px]">{reference.position}</p>
+              <p className="text-sm text-cyan-700 py-2 max-md:text-[15px] max-sm:text-[15px]">
                 {Array.isArray(reference.company)
                   ? reference.company.join(", ")
                   : reference.company}
@@ -97,7 +97,7 @@ const ReferencesContent = () => {
                 {reference.email && (
                   <a
                     href={`mailto:${reference.email}`}
-                    className="inline-flex items-center gap-1.5 text-xs max-md:text-[18px] font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
+                    className="inline-flex items-center max-sm:text-[15px] gap-1.5 text-xs max-md:text-[18px] font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
                   >
                     <Send className="w-2.5 h-2.5 text-blue-500 hover:text-blue-400 transition-colors" />{" "}
                     Email
@@ -107,7 +107,7 @@ const ReferencesContent = () => {
                   <a
                     href={reference.linkedin}
                     target="window"
-                    className="inline-flex items-center gap-1.5 text-xs max-md:text-[18px] font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
+                    className="inline-flex items-center gap-1.5 text-xs max-sm:text-[15px] max-md:text-[18px] font-medium text-blue-400 group-hover:text-blue-300 bg-blue-500/10 hover:bg-blue-500/20 px-2.5 py-1.5 rounded-md border border-blue-500/20 transition-all w-fit"
                   >
                     Linkedin
                   </a>

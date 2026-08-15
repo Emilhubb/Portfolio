@@ -17,7 +17,7 @@ export default function MarqueeEffect() {
   ];
 
   return (
-    <main className=" w-70 max-md:w-full max-md:px-10 mb-5 italic">
+    <main className=" w-70 max-md:w-full max-sm:w-full max-sm:px-2 max-md:px-10 mb-5 italic">
       <SimpleMarquee texts={mySkills} speed={25} />
     </main>
   );

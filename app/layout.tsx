@@ -45,7 +45,7 @@ export default function RootLayout({
             <main className="border-2 border-(--border-color)">{children}</main>
           </div>
         </div>
-          <div className="mt-8 p-4 border-t border-slate-800/80 w-full flex items-center justify-center text-xs max-md:text-xl text-slate-400 select-none">
+          <div className="mt-8 p-4 border-t border-slate-800/80 w-full flex items-center justify-center text-xs max-md:text-xl max-sm:text-[15px] text-slate-400 select-none">
             <p>© 2026 Emil Kazımov</p>
           </div>
         

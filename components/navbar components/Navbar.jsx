@@ -12,7 +12,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="flex p-4 text-2xl gap-8  max-sm:gap-4 justify-center backdrop-blur-[10px] bg-black/30">
+    <div className="flex flex-wrap p-4 text-2xl gap-8 max-sm:text-[20px]  max-sm:gap-4 justify-center backdrop-blur-[10px] bg-black/30">
       
       {links.map(({ link, href }) => {
         const isActive = pathname === href;

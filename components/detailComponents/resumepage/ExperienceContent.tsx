@@ -130,7 +130,7 @@ const ExperienceContent = () => {
   return (
     <div className="w-full  rounded-lg p-6 select-none">
       <div className="flex flex-col gap-4 mb-10">
-        <span className="text-4xl font-bold text-(--primary-color) drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
+        <span className="text-4xl max-sm:text-2xl font-bold text-(--primary-color) drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]">
           # Experience
         </span>
       </div>
@@ -143,21 +143,21 @@ const ExperienceContent = () => {
              hover:border-r-(--border-color) hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] 
              hover:-translate-y-1.5 duration-350 transition-all"
         >
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
-            <div className="flex flex-col gap-1">
+          <div className="flex flex-col  md:flex-row md:justify-between md:items-start gap-2">
+            <div className="flex flex-col gap-1 max-sm:flex-col">
               <span className="text-xl font-bold text-white group-hover:text-blue-700 transition-colors">
                 {experience.role}
               </span>
-              <span className="text-sm font-medium text-neutral-400 flex items-center gap-2">
+              <span className="text-sm font-medium max-sm:flex-col max-sm:items-start text-neutral-400 flex items-center gap-2">
                 <span>{experience.company}</span>
-                <span className="text-xs text-neutral-600">•</span>
-                <span>{experience.location}</span>
+                <span className="text-xs text-neutral-600 max-sm:hidden">•</span>
+                <span className="max-sm:text-[10px]">{experience.location}</span>
               </span>
             </div>
 
             <span
               className="text-sm font-bold 
-                     px-3 py-1  w-fit drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                     px-3 py-1 max-sm:px-0  w-fit drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
             >
               {experience.period}
             </span>

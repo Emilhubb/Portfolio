@@ -3,9 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { Cloud, DollarSign, LayoutTemplate } from "lucide-react";
-import Currency from "@/public/currency.png"
-import Weather from "@/public/weather.png"
-import Portfolio from "@/public/portfolio.png"
+import Currency from "@/public/currency.png";
+import Weather from "@/public/weather.png";
+import Portfolio from "@/public/portfolio.png";
 interface Project {
   title: string;
   description: string;
@@ -18,12 +18,11 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Weather App",
-    description:
-      "Real-time weather data with location search and forecast.",
+    description: "Real-time weather data with location search and forecast.",
     tags: ["Next.js", "TypeScript", "API"],
     link: "https://weatherapp-project-81.vercel.app",
     icon: <Cloud size={18} />,
-    image: Weather.src
+    image: Weather.src,
   },
   {
     title: "Currency Converter",
@@ -59,7 +58,7 @@ const FeaturedProjects: React.FC = () => {
             key={idx}
             href={project.link}
             target="_blank"
-            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] max-md:m-5 max-md:h-100 max-sm:h-100"
+            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] max-md:m-5 max-md:h-100 max-sm:h-120"
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-500/5 pointer-events-none z-10" />
 

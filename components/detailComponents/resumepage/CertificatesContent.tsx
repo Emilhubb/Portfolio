@@ -121,7 +121,7 @@ export default function CertificatesSection() {
   return (
     <section className="w-full p-6 mb-5 select-none">
       <div className="flex flex-col gap-2 mb-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-(--primary-color) drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+        <h2 className="text-3xl max-sm:text-2xl md:text-4xl font-bold text-(--primary-color) drop-shadow-[0_0_10px_rgba(59,130,246,0.5)]">
           # Certificates & Credentials
         </h2>
       </div>
@@ -137,20 +137,20 @@ export default function CertificatesSection() {
           >
             <div>
               <div className="flex justify-between items-start gap-3 mb-2">
-                <h3 className="text-base max-md:text-2xl max-2xl:text-[20px] font-bold text-white group-hover:text-blue-700 transition-colors leading-snug">
+                <h3 className="text-base max-md:text-2xl max-sm:text-lg max-2xl:text-[20px] font-bold text-white group-hover:text-blue-700 transition-colors leading-snug">
                   {cert.title}
                 </h3>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 text-xs text-neutral-400 mb-3">
-                <span className="font-semibold max-md:text-[15px] max-2xl:text-[15px] text-cyan-700">
+              <div className="flex flex-wrap max-sm:flex-col max-sm:items-start max-sm:my-5 items-center gap-2 text-xs text-neutral-400 mb-3">
+                <span className="font-semibold max-sm:text-md max-md:text-[15px] max-2xl:text-[15px] text-cyan-700">
                   {cert.issuer}
                 </span>
-                <span>•</span>
+                <span className="max-sm:hidden">•</span>
                 <span className="max-md:text-[15px] max-2xl:text-[14px]">{cert.issueDate}</span>
                 {cert.badge && (
                   <>
-                    <span>•</span>
+                    <span className="max-sm:hidden">•</span>
                     <span className=" font-medium max-md:text-[15px] max-2xl:text-[15px] ">
                       {cert.badge}
                     </span>

@@ -31,7 +31,7 @@ const LanguageList = () => {
               alt={`${lang.name} flag`}
               className="w-5 h-5 rounded-full object-cover shrink-0"
             />
-            <span className="text-white text-xl select-none max-md:text-2xl">{lang.name}</span>
+            <span className="text-white text-xl select-none max-md:text-2xl max-sm:text-xl">{lang.name}</span>
           </li>
         ))}
       </ul>
