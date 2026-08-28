@@ -1,18 +1,30 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import DOMPurify from "isomorphic-dompurify";
+
+function escapeHTML(str: string = ""): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { method, name, email, subject, telegramUsername, message } = body;
+    const { method, name, email, subject, message } = body;
 
-    if (!name || !message) {
+    if (!name?.trim() || !message?.trim()) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 },
       );
     }
-
+    const cleanName = DOMPurify.sanitize(name.trim());
+    const cleanMessage = DOMPurify.sanitize(message.trim());
+    const cleanSubject = subject ? DOMPurify.sanitize(subject.trim()) : "";
     if (method === "email") {
       const resendApiKey = process.env.RESEND_API_KEY;
 
@@ -25,21 +37,24 @@ export async function POST(req: Request) {
       }
 
       const resend = new Resend(resendApiKey);
-
+      const formattedMessage = escapeHTML(cleanMessage).replace(
+        /\n/g,
+        "<br />",
+      );
       const { error } = await resend.emails.send({
         from: "Portfolio Contact <onboarding@resend.dev>",
         to: "emil.kazimli93@gmail.com",
         replyTo: email,
         subject: subject || `Yeni mesaj - ${name}`,
         html: `
-          <div style="font-family: sans-serif; line-height: 1.6;">
+          <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
             <h2>New Portfolio Message</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Topic:</strong> ${subject || "Qeyd olunmayıb"}</p>
-            <hr />
+            <p><strong>Name:</strong> ${escapeHTML(cleanName)}</p>
+            <p><strong>Email:</strong> ${escapeHTML(email)}</p>
+            <p><strong>Topic:</strong> ${cleanSubject ? escapeHTML(cleanSubject) : "Qeyd olunmayıb"}</p>
+            <hr style="border: none; border-top: 1px solid #ccc;" />
             <p><strong>Message:</strong></p>
-            <p>${message.replace(/\n/g, "<br />")}</p>
+            <p>${formattedMessage}</p>
           </div>
         `,
       });
@@ -64,15 +79,18 @@ export async function POST(req: Request) {
           { status: 500 },
         );
       }
+      const safeName = escapeHTML(name);
+      const safeUsername = telegramUsername ? escapeHTML(telegramUsername) : "";
+      const safeMessage = escapeHTML(message);
 
       const text = `
-📩 *Yeni Portfolio Mesajı*
+📩 <b>Yeni Portfolio Mesajı</b>
 
-👤 *Ad:* ${name}
-${telegramUsername ? `\n💬 *Telegram username:* ${telegramUsername}` : ""}
-💬 *Mesaj:* 
+👤 <b>Ad:</b> ${safeName}
+${safeUsername ? `\n💬 <b>Telegram username:</b> ${safeUsername}` : ""}
+💬 <b>Mesaj:</b>
 
-${message}
+${safeMessage}
   `;
 
       const response = await fetch(
