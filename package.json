@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@claycot/react-7-segment-display": "^1.1.2",
+    "axios": "^1.20.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "duolingo-api-js": "^0.0.5",

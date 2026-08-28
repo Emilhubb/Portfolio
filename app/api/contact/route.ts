@@ -2,7 +2,11 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import DOMPurify from "isomorphic-dompurify";
 
-function escapeHTML(str: string = ""): string {
+function escapeTelegramHTML(str: string = ""): string {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function escapeEmailHTML(str: string = ""): string {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -40,7 +44,7 @@ export async function POST(req: Request) {
       }
 
       const resend = new Resend(resendApiKey);
-      const formattedMessage = escapeHTML(cleanMessage).replace(
+      const formattedMessage = escapeEmailHTML(cleanMessage).replace(
         /\n/g,
         "<br />",
       );
@@ -52,9 +56,11 @@ export async function POST(req: Request) {
         html: `
           <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
             <h2>New Portfolio Message</h2>
-            <p><strong>Name:</strong> ${escapeHTML(cleanName)}</p>
-            <p><strong>Email:</strong> ${escapeHTML(email)}</p>
-            <p><strong>Topic:</strong> ${cleanSubject ? escapeHTML(cleanSubject) : "Qeyd olunmayıb"}</p>
+            <p><strong>Name:</strong> ${escapeEmailHTML(cleanName)}</p>
+            <p><strong>Email:</strong> ${escapeEmailHTML(email)}</p>
+            <p><strong>Topic:</strong> ${
+              cleanSubject ? escapeEmailHTML(cleanSubject) : "Qeyd olunmayıb"
+            }</p>
             <hr style="border: none; border-top: 1px solid #ccc;" />
             <p><strong>Message:</strong></p>
             <p>${formattedMessage}</p>
@@ -82,19 +88,18 @@ export async function POST(req: Request) {
           { status: 500 },
         );
       }
-      const safeName = escapeHTML(name);
-      const safeUsername = cleanTelegramUser ? escapeHTML(cleanTelegramUser) : "";
-      const safeMessage = escapeHTML(message);
+      const safeName = escapeTelegramHTML(cleanName);
+      const safeUsername = cleanTelegramUser
+        ? escapeTelegramHTML(cleanTelegramUser)
+        : "";
+      const safeMessage = escapeTelegramHTML(cleanMessage);
 
-      const text = `
-📩 <b>Yeni Portfolio Mesajı</b>
-
-👤 <b>Ad:</b> ${safeName}
-${safeUsername ? `\n💬 <b>Telegram username:</b> ${safeUsername}` : ""}
-💬 <b>Mesaj:</b>
-
-${safeMessage}
-  `;
+      let text = `📩 <b>Yeni Portfolio Mesajı</b>\n\n`;
+      text += `👤 <b>Ad:</b> ${safeName}\n`;
+      if (safeUsername) {
+        text += `💬 <b>Telegram:</b> @${safeUsername.replace(/^@/, "")}\n`;
+      }
+      text += `\n💬 <b>Mesaj:</b>\n${safeMessage}`;
 
       const response = await fetch(
         `https://api.telegram.org/bot${token}/sendMessage`,
@@ -103,7 +108,7 @@ ${safeMessage}
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             chat_id: chatId,
-            text,
+            text: text,
             parse_mode: "HTML",
           }),
         },
