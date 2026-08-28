@@ -1,12 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import DOMPurify from "isomorphic-dompurify";
 
-function escapeTelegramHTML(str: string = ""): string {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function escapeEmailHTML(str: string = ""): string {
+function escapeHTML(str: string = ""): string {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -26,12 +21,12 @@ export async function POST(req: Request) {
         { status: 400 },
       );
     }
-    const cleanName = DOMPurify.sanitize(name.trim());
-    const cleanMessage = DOMPurify.sanitize(message.trim());
-    const cleanSubject = subject ? DOMPurify.sanitize(subject.trim()) : "";
-    const cleanTelegramUser = telegramUsername
-      ? DOMPurify.sanitize(telegramUsername.trim())
-      : "";
+
+    const cleanName = name.trim();
+    const cleanMessage = message.trim();
+    const cleanSubject = subject ? subject.trim() : "";
+    const cleanTelegramUser = telegramUsername ? telegramUsername.trim() : "";
+
     if (method === "email") {
       const resendApiKey = process.env.RESEND_API_KEY;
 
@@ -44,7 +39,7 @@ export async function POST(req: Request) {
       }
 
       const resend = new Resend(resendApiKey);
-      const formattedMessage = escapeEmailHTML(cleanMessage).replace(
+      const formattedMessage = escapeHTML(cleanMessage).replace(
         /\n/g,
         "<br />",
       );
@@ -52,15 +47,13 @@ export async function POST(req: Request) {
         from: "Portfolio Contact <onboarding@resend.dev>",
         to: "emil.kazimli93@gmail.com",
         replyTo: email,
-        subject: subject || `Yeni mesaj - ${name}`,
+        subject: cleanSubject || `Yeni mesaj - ${cleanName}`,
         html: `
           <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
             <h2>New Portfolio Message</h2>
-            <p><strong>Name:</strong> ${escapeEmailHTML(cleanName)}</p>
-            <p><strong>Email:</strong> ${escapeEmailHTML(email)}</p>
-            <p><strong>Topic:</strong> ${
-              cleanSubject ? escapeEmailHTML(cleanSubject) : "Qeyd olunmayıb"
-            }</p>
+            <p><strong>Name:</strong> ${escapeHTML(cleanName)}</p>
+            <p><strong>Email:</strong> ${escapeHTML(email)}</p>
+            <p><strong>Topic:</strong> ${cleanSubject ? escapeHTML(cleanSubject) : "Qeyd olunmayıb"}</p>
             <hr style="border: none; border-top: 1px solid #ccc;" />
             <p><strong>Message:</strong></p>
             <p>${formattedMessage}</p>
@@ -88,18 +81,22 @@ export async function POST(req: Request) {
           { status: 500 },
         );
       }
-      const safeName = escapeTelegramHTML(cleanName);
-      const safeUsername = cleanTelegramUser
-        ? escapeTelegramHTML(cleanTelegramUser)
-        : "";
-      const safeMessage = escapeTelegramHTML(cleanMessage);
 
-      let text = `📩 <b>Yeni Portfolio Mesajı</b>\n\n`;
-      text += `👤 <b>Ad:</b> ${safeName}\n`;
-      if (safeUsername) {
-        text += `💬 <b>Telegram:</b> @${safeUsername.replace(/^@/, "")}\n`;
-      }
-      text += `\n💬 <b>Mesaj:</b>\n${safeMessage}`;
+      const safeName = escapeHTML(cleanName);
+      const safeUsername = cleanTelegramUser
+        ? escapeHTML(cleanTelegramUser)
+        : "";
+      const safeMessage = escapeHTML(cleanMessage);
+
+      const text = `
+📩 <b>Yeni Portfolio Mesajı</b>
+
+👤 <b>Ad:</b> ${safeName}
+${safeUsername ? `\n💬 <b>Telegram username:</b> ${safeUsername}` : ""}
+💬 <b>Mesaj:</b>
+
+${safeMessage}
+  `;
 
       const response = await fetch(
         `https://api.telegram.org/bot${token}/sendMessage`,
@@ -108,7 +105,7 @@ export async function POST(req: Request) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             chat_id: chatId,
-            text: text,
+            text,
             parse_mode: "HTML",
           }),
         },
