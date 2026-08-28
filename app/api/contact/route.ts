@@ -14,7 +14,7 @@ function escapeHTML(str: string = ""): string {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { method, name, email, subject, message } = body;
+    const { method, name, email, subject, telegramUsername, message } = body;
 
     if (!name?.trim() || !message?.trim()) {
       return NextResponse.json(
@@ -25,6 +25,9 @@ export async function POST(req: Request) {
     const cleanName = DOMPurify.sanitize(name.trim());
     const cleanMessage = DOMPurify.sanitize(message.trim());
     const cleanSubject = subject ? DOMPurify.sanitize(subject.trim()) : "";
+    const cleanTelegramUser = telegramUsername
+      ? DOMPurify.sanitize(telegramUsername.trim())
+      : "";
     if (method === "email") {
       const resendApiKey = process.env.RESEND_API_KEY;
 
@@ -80,7 +83,7 @@ export async function POST(req: Request) {
         );
       }
       const safeName = escapeHTML(name);
-      const safeUsername = telegramUsername ? escapeHTML(telegramUsername) : "";
+      const safeUsername = cleanTelegramUser ? escapeHTML(cleanTelegramUser) : "";
       const safeMessage = escapeHTML(message);
 
       const text = `
