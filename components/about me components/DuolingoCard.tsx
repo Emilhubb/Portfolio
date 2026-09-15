@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
+import { API_URL } from "@/lib/api";
 
 import English from "../../public/english.png";
 import German from "../../public/german.png";
@@ -45,9 +46,7 @@ export default function DuolingoCard() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(
-      "/api/duolingo",
-    )
+    fetch(`${API_URL}/api/duolingo`)
       .then((res) => res.json())
       .then((data: { users?: DuolingoStats[]; error?: string }) => {
         const user = data.users?.[0];

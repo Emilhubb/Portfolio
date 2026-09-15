@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
+import {API_URL} from '@/lib/api'
 type ContactMethod = "email" | "telegram";
 
 export function ContactContent() {
@@ -37,7 +37,7 @@ export function ContactContent() {
     setStatus("idle");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
