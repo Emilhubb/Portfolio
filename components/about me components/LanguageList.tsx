@@ -17,10 +17,18 @@ const languages = [
 
 const LanguageList = () => {
   const [toggleDuolingoCard, setToggleDuolingoCard] = useState(false);
-
+  const [hasOpenedDuolingo, setHasOpenedDuolingo] = useState(false);
   const handleToggleDuolingoCard = () => {
-    setToggleDuolingoCard(!toggleDuolingoCard);
-  }
+    setToggleDuolingoCard((previous) => {
+      const nextValue = !previous;
+
+      if (nextValue) {
+        setHasOpenedDuolingo(true);
+      }
+
+      return nextValue;
+    });
+  };
   return (
     <>
       <ul className="flex flex-col p-4 gap-4 w-full py-4 ">
@@ -31,7 +39,9 @@ const LanguageList = () => {
               alt={`${lang.name} flag`}
               className="w-5 h-5 rounded-full object-cover shrink-0"
             />
-            <span className="text-white text-xl select-none max-md:text-2xl max-sm:text-xl">{lang.name}</span>
+            <span className="text-white text-xl select-none max-md:text-2xl max-sm:text-xl">
+              {lang.name}
+            </span>
           </li>
         ))}
       </ul>
@@ -44,16 +54,18 @@ const LanguageList = () => {
           />
           <span
             className="text-white/70 select-none italic cursor-pointer"
-            onClick={() => setToggleDuolingoCard(!toggleDuolingoCard)}
+            onClick={() => handleToggleDuolingoCard()}
           >
-            {
-              toggleDuolingoCard ? "Hide Duolingo Card" : "Show Duolingo Card"
-            }
+            {toggleDuolingoCard ? "Hide Duolingo Card" : "Show Duolingo Card"}
           </span>
         </li>
       </ul>
-      {toggleDuolingoCard && (
-        <div className="mt-4 px-4 mb-8 bg-transparent backdrop-blur-[10px] max-md:flex max-md:w-full ">
+      {hasOpenedDuolingo && (
+        <div
+          className={`mt-4 px-4 mb-8 bg-transparent backdrop-blur-[10px] ${
+            toggleDuolingoCard ? "block" : "hidden"
+          }`}
+        >
           <DuolingoCard />
         </div>
       )}
