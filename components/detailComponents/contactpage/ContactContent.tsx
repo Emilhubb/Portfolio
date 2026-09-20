@@ -1,7 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import {API_URL} from '@/lib/api'
+import { API_URL } from "@/lib/api";
+
 type ContactMethod = "email" | "telegram";
+
+type ContactField =
+  | "method"
+  | "name"
+  | "email"
+  | "subject"
+  | "telegramUsername"
+  | "message";
+
+type FieldErrors = Partial<Record<ContactField, string[]>>;
 
 export function ContactContent() {
   const [method, setMethod] = useState<ContactMethod>("email");
@@ -14,11 +25,21 @@ export function ContactContent() {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setFieldErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: undefined,
+    }));
   };
 
   useEffect(() => {
@@ -33,37 +54,63 @@ export function ContactContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setLoading(true);
     setStatus("idle");
+    setFieldErrors({});
+    setErrorMessage("");
 
     try {
       const response = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           method,
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          telegramUsername: formData.telegramUsername,
-          message: formData.message,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          subject: formData.subject.trim(),
+          telegramUsername: formData.telegramUsername.trim(),
+          message: formData.message.trim(),
         }),
       });
 
-      if (response.ok) {
-        setStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          telegramUsername: "",
-          message: "",
-        });
-      } else {
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.error("Contact API error:", result);
+
+        setFieldErrors(result.fields ?? {});
+
+        if (response.status === 429) {
+          setErrorMessage(
+            "Too many messages were sent. Please try again later.",
+          );
+        } else {
+          setErrorMessage(result.error ?? "Message could not be sent.");
+        }
+
         setStatus("error");
+        return;
       }
-    } catch (err) {
+
+      setStatus("success");
+      setFieldErrors({});
+      setErrorMessage("");
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        telegramUsername: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Contact request failed:", error);
+
       setStatus("error");
+      setErrorMessage("Could not connect to the server.");
     } finally {
       setLoading(false);
     }
@@ -77,9 +124,11 @@ export function ContactContent() {
         </p>
       </div>
       <div className="relative max-w-2xl mx-auto rounded-2xl my-10  bg-transparent backdrop-blur-[6px] shadow-[0_2px_30px_rgba(59,130,246,0.2)] p-10">
-      
-
-        <form onSubmit={handleSubmit} className="relative space-y-4 text-left">
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="relative space-y-4 text-left"
+        >
           <div className="flex gap-4 max-sm:gap-2 justify-center pb-2">
             <label
               className={`flex items-center gap-2 max-sm:px-2 px-4 py-2 rounded-lg border cursor-pointer backdrop-blur-sm transition ${
@@ -128,6 +177,9 @@ export function ContactContent() {
               required
               className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition"
             />
+            {fieldErrors.name?.[0] && (
+              <p className="mt-1 text-sm text-red-400">{fieldErrors.name[0]}</p>
+            )}
           </div>
 
           {method === "email" ? (
@@ -142,6 +194,11 @@ export function ContactContent() {
                   required
                   className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition"
                 />
+                {fieldErrors.email?.[0] && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {fieldErrors.email[0]}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -153,6 +210,11 @@ export function ContactContent() {
                   onChange={handleChange}
                   className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition"
                 />
+                {fieldErrors.subject?.[0] && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {fieldErrors.subject[0]}
+                  </p>
+                )}
               </div>
             </>
           ) : (
@@ -165,6 +227,11 @@ export function ContactContent() {
                 onChange={handleChange}
                 className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition"
               />
+              {fieldErrors.telegramUsername?.[0] && (
+                <p className="mt-1 text-sm text-red-400">
+                  {fieldErrors.telegramUsername[0]}
+                </p>
+              )}
             </div>
           )}
 
@@ -178,6 +245,11 @@ export function ContactContent() {
               required
               className="w-full resize-none bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition"
             />
+            {fieldErrors.message?.[0] && (
+              <p className="mt-1 text-sm text-red-400">
+                {fieldErrors.message[0]}
+              </p>
+            )}
           </div>
 
           <button
@@ -193,13 +265,14 @@ export function ContactContent() {
               ✓ Message sent successfully!
             </p>
           )}
-          {status === "error" && (
-            <p className="text-red-400 text-sm text-center">
-              ✕ Error occured. Try again.
-            </p>
+          {status === "error" && errorMessage && (
+            <p className="text-red-400 text-sm text-center">✕ {errorMessage}</p>
           )}
         </form>
       </div>
     </>
   );
+}
+function setErrorMessage(arg0: string) {
+  throw new Error("Function not implemented.");
 }
