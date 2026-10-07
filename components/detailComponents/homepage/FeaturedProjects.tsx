@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Cloud, DollarSign, LayoutTemplate } from "lucide-react";
 import Currency from "@/public/currency.png";
+import SimpleCurrency from "@/public/simple currency.png";
 import Weather from "@/public/weather.png";
 import Portfolio from "@/public/portfolio.png";
 interface Project {
@@ -19,14 +20,14 @@ const projects: Project[] = [
   {
     title: "Weather App",
     description: "Real-time weather data with location search and forecast.",
-    tags: ["Next.js", "TypeScript", "API"],
+    tags: ["JavaScript", "REST API"],
     link: "https://weatherapp-project-81.vercel.app",
     icon: <Cloud size={18} />,
     image: Weather.src,
   },
   {
-    title: "Currency Converter",
-    description: "Live exchange rates with instant multi-currency conversion.",
+    title: "Currency Converter (Extended)",
+    description: "Live exchange rates with extended currencies",
     tags: ["JavaScript", "REST API"],
     link: "https://currency-live-theta.vercel.app",
     icon: <DollarSign size={18} />,
@@ -36,11 +37,19 @@ const projects: Project[] = [
     title: "Portfolio Web Page",
     description:
       "Personal portfolio built with a custom dark neon design system.",
-    tags: ["React", "Tailwind", "Motion"],
+    tags: ["React", "Tailwind", "Next.js", "TypeScript"],
     link: "#",
     icon: <LayoutTemplate size={18} />,
     image: Portfolio.src,
   },
+  {
+    title: "Currency Converter (Simple)",
+    description: "Live exchange rates with RUB, USD, EUR and GBP",
+    tags: ["JavaScript", "REST API"],
+    link: "https://currency-converter-project-alpha.vercel.app",
+    icon: <DollarSign size={18} />,
+    image: SimpleCurrency.src,
+  }
 ];
 
 const FeaturedProjects: React.FC = () => {

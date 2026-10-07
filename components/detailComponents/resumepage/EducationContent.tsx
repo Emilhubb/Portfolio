@@ -23,7 +23,7 @@ const EducationContext = () => {
     {
       id: 1,
       period: "Sep 2026 — Present",
-      degree: "Master of Science (M.S.) in Cyber Security",
+      degree: "Master Degree – Cyber Security",
       institution: "Azerbaijan State Oil and Industry University (ASOIU)",
       status: "In Progress..",
       metrics: {
@@ -33,7 +33,7 @@ const EducationContext = () => {
     {
       id: 2,
       period: "Sep 2022 — Jul 2026",
-      degree: "Bachelor of Science (B.S.) in Information Security",
+      degree: "Bachelor Degree – Information Security",
       institution: "Azerbaijan State Oil and Industry University (ASOIU)",
       status: "Graduated",
       metrics: {

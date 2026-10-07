@@ -13,7 +13,9 @@ import Lucebra from "../../../public/certificates/lucebra.jpg";
 import ModernWeb from "../../../public/certificates/modernweb.jpg";
 import F1 from "../../../public/certificates/f1.jpg";
 import WUF13 from "../../../public/certificates/wuf13.jpg";
-
+import Cyber from "../../../public/certificates/cyber.png";
+import Frontend from "../../../public/certificates/Frontend.png";
+import HackerRank from "../../../public/certificates/HackerRank.jpg";
 interface CertificateType {
   id: number;
   title: string;
@@ -102,6 +104,30 @@ const CertificatesData: CertificateType[] = [
     badge: "Database Architecture",
     image: ModernWeb,
   },
+  {
+    id: 10,
+    title: "Google Cybersecurity Professional Certificate",
+    issuer: "Google",
+    issueDate: "2026",
+    badge: "Cyber Security",
+    image: Cyber,
+  },
+  {
+    id: 11,
+    title: "Meta Frontend Developer Professional Certificate",
+    issuer: "Meta",
+    issueDate: "2026",
+    badge: "React Development",
+    image: Frontend
+  },
+  {
+    id: 12,
+    title: "Frontend Developer (React)",
+    issuer: "HackerRank",
+    issueDate: "2026",
+    badge: "React Development",
+    image: HackerRank
+  }
 ];
 
 export default function CertificatesSection() {
