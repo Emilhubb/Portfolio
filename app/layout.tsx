@@ -1,11 +1,10 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Black_Ops_One, Geist } from "next/font/google";
+import { Black_Ops_One} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { BackgroundBeams } from "@/components/ui/beams";
 import Navbar from "@/components/navbar components/Navbar";
-import AboutMe from "@/components/about me components/AboutMe";
 import PortfolioCard from "@/components/about me components/PortfolioCard";
 
 const blackOpsOne = Black_Ops_One({
@@ -15,6 +14,8 @@ const blackOpsOne = Black_Ops_One({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://emilkazimovdev.vercel.app"),
+
   title: "Emil | Frontend Developer Portfolio",
   description:
     "Frontend Developer portfolio specializing in React and Next.js. Discover my latest projects, skills, and contact information.",
