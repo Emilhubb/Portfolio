@@ -10,6 +10,7 @@ const contentSecurityPolicy = [
   `connect-src 'self' ${apiOrigin}`,
   `script-src 'self' 'unsafe-inline'${isProduction ? "" : " 'unsafe-eval'"}`,
   "style-src 'self' 'unsafe-inline'",
+  "frame-src https://open.spotify.com",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "object-src 'none'",

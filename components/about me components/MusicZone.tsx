@@ -24,7 +24,7 @@ const MusicZone = () => {
           height="500"
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="eager"
+          loading="lazy"
           className=" shadow-[0_0_30px_10px_rgba(59,130,246,0.2)] "
         ></iframe>
       </div>
