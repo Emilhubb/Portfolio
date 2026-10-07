@@ -1,7 +1,8 @@
 "use client";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Image from "../../public/profilephoto.jpeg";
+import Image from "next/image";
+import profilePhoto from "../../public/profilephoto.jpeg";
 
 export default function ImageOnly3D() {
   return (
@@ -11,10 +12,13 @@ export default function ImageOnly3D() {
           translateZ="60"
           className="relative w-full h-full max-sm:  rounded-sm overflow-hidden border border-blue-500/20 shadow-md transition-shadow duration-300 group-hover/card:shadow-2xl"
         >
-          <img
-            src={Image.src}
+          <Image
+            src={profilePhoto}
             className="w-full h-full object-cover object-center"
-            alt="Emil Portfolio Image"
+            alt="Emil Kazimov"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 280px"
           />
           <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-blue-500 rounded-tl pointer-events-none" />
           <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-blue-500 rounded-tr pointer-events-none" />

@@ -15,10 +15,13 @@ const blackOpsOne = Black_Ops_One({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://emilkazimovdev.vercel.app"),
-
-  title: "Emil | Frontend Developer Portfolio",
+  title: {
+    default: "Emil Kazimov | Frontend Developer",
+    template: "%s | Emil Kazimov",
+  },
   description:
     "Frontend Developer portfolio specializing in React and Next.js. Discover my latest projects, skills, and contact information.",
+  alternates: { canonical: "/" },
   icons: {
     icon: "/roundedPhoto.png",
     apple: "/roundedPhoto.png",
@@ -43,27 +46,29 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
-  alternates: {
-    canonical: "https://emilkazimovdev.vercel.app",
-  },
   authors: [{ name: "Emil", url: "https://github.com/Emilhubb" }],
   creator: "Emil",
   openGraph: {
     title: "Emil | Frontend Developer Portfolio",
     description:
       "Discover my latest projects, skills, and contact information.",
-    url: "https://emilkazimovdev.vercel.app",
+    url: "/",
     siteName: "Emil Portfolio",
     images: [
       {
-        url: "/profilephoto.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Emil Portfolio Preview",
+        url: "/portfolio.png",
+        alt: "Emil Kazimov portfolio preview",
       },
     ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Emil Kazimov | Frontend Developer",
+    description:
+      "Frontend Developer portfolio specializing in React and Next.js.",
+    images: ["/portfolio.png"],
   },
 };
 

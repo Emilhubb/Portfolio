@@ -1,5 +1,3 @@
-"use client";
-
 export function StatusBanner() {
   return (
     <div className="w-full flex justify-center my-8 max-sm:px-5">

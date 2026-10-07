@@ -273,6 +273,3 @@ export function ContactContent() {
     </>
   );
 }
-function setErrorMessage(arg0: string) {
-  throw new Error("Function not implemented.");
-}
