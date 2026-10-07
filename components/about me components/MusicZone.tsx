@@ -1,4 +1,4 @@
-import React from "react";
+import SpotifyEmbed from "./SpotifyEmbed";
 
 const MusicZone = () => {
   return (
@@ -16,17 +16,7 @@ const MusicZone = () => {
         </p>
       </div>
       <div className="h-auto py-5 flex justify-center">
-        <iframe
-          data-testid="embed-iframe"
-          style={{ borderRadius: "15px" }}
-          src="https://open.spotify.com/embed/playlist/5u4XmlPeEbiDDbxPp57qCQ?utm_source=generator&theme=0&si=14bfed0cb1cd4429"
-          width="100%"
-          height="500"
-          allowFullScreen
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          className=" shadow-[0_0_30px_10px_rgba(59,130,246,0.2)] "
-        ></iframe>
+        <SpotifyEmbed />
       </div>
     </div>
   );

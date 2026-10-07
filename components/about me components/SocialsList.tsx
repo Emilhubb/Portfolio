@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Linkedin from "../../public/linkedin.webp";
 import Github from "../../public/github.png";
@@ -29,10 +27,13 @@ const SocialList = () => {
           <li key={social.name} className="flex items-center gap-2 transition-transform duration-400 hover:scale-105">
             <Image
               src={social.icon}
-              alt="Icon"
+              alt={`${social.name} icon`}
+              width={20}
+              height={20}
+              sizes="20px"
               className="w-5 h-5 rounded-full object-cover shrink-0"
             />
-            <a className="text-white text-md select-none max-md:text-2xl max-sm:text-xl" href={social.href} target="window">
+            <a className="text-white text-md select-none max-md:text-2xl max-sm:text-xl" href={social.href} target="_blank" rel="noopener noreferrer">
               {social.name}
             </a>
           </li>
