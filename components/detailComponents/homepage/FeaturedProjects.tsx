@@ -5,6 +5,7 @@ import Currency from "@/public/currency.png";
 import SimpleCurrency from "@/public/simple currency.png";
 import Weather from "@/public/weather.png";
 import Portfolio from "@/public/portfolio.png";
+import SecScan from "@/public/secscan.png";
 interface Project {
   title: string;
   description: string;
@@ -35,8 +36,8 @@ const projects: Project[] = [
     title: "Portfolio Web Page",
     description:
       "Personal portfolio built with a custom dark neon design system.",
-    tags: ["React", "Tailwind", "Next.js", "TypeScript"],
-    link: "#",
+    tags: ["Next.js", "Tailwind", "TypeScript"],
+    link: "https://emilkazimovdev.vercel.app",
     icon: <LayoutTemplate size={18} />,
     image: Portfolio.src,
   },
@@ -47,7 +48,16 @@ const projects: Project[] = [
     link: "https://currency-converter-project-alpha.vercel.app",
     icon: <DollarSign size={18} />,
     image: SimpleCurrency.src,
-  }
+  },
+  {
+    title: "SecScan (Security Scanner)",
+    description:
+      "A security scanner for identifying vulnerabilities in web applications.",
+    tags: ["Next.js", "Tailwind", "TypeScript"],
+    link: "https://secscan-app.vercel.app",
+    icon: <LayoutTemplate size={18} />,
+    image: SecScan.src,
+  },
 ];
 
 const FeaturedProjects: React.FC = () => {
