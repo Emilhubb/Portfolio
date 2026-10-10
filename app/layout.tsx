@@ -1,5 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Black_Ops_One} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -73,11 +74,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  await headers();
+
   return (
     <html
       lang="en"
