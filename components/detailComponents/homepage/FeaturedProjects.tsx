@@ -69,16 +69,16 @@ const FeaturedProjects: React.FC = () => {
           Featured Projects
         </h2>
       </div>
-      <div className="grid grid-cols-1 max-sm:grid-cols-1 max-md:grid-cols-1 max-md:gap-0 lg:grid-cols-3 gap-4 px-2 max-2xl:px-4">
+      <div className="grid grid-cols-1 max-sm:grid-cols-1 max-sm:px-1 max-md:grid-cols-1 max-md:gap-0  lg:grid-cols-3 gap-4 px-2 max-2xl:px-4">
         {projects.map((project: Project, idx: number) => (
           <a
             key={idx}
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] max-md:m-5 max-md:h-100 max-sm:h-120"
+            className="group relative border border-(--border-color) rounded-xl bg-black/40 backdrop-blur-sm hover:border-blue-500 transition-colors hover:transition-transform hover:scale-102 hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-[0_0_15px_rgba(59,130,246,0.9)] max-md:m-5 max-md:h-100 max-sm:h-130"
           >
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-500/5 pointer-events-none z-10" />
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-500/5 pointer-events-none z-10 " />
 
             <div className="relative w-full h-40 overflow-hidden border-b border-(--border-color) max-md:h-60">
               <Image
@@ -104,7 +104,7 @@ const FeaturedProjects: React.FC = () => {
               <p className="text-neutral-400 text-sm mb-5 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1 ">
                 {project.tags.map((tag: string, i: number) => (
                   <span
                     key={i}
